@@ -5,18 +5,22 @@
     "homepage" : "https://github.com/evert/phpdoc-md",
     "license" : "MIT",
     "require" : {
-        "php" : ">=5.3.1",
-        "twig/twig" : "~1.2|2.0"
+        "php" : ">=5.6",
+        "twig/twig" : ">=1.2"
     },
     "require-dev" : {
-        "phpdocumentor/phpdocumentor" : "~2.8.0",
-        "sabre/cs"                    : "~0.0.5"
+        "phpdocumentor/phpdocumentor" : ">=2.8",
+        "phpunit/phpunit": ">=5.7"
     },
     "authors" : [
         {
             "name" : "Evert Pot",
             "email" : "evert@rooftopsolutions.nl",
             "homepage" : "http://www.rooftopsolutions.nl/",
+            "role" : "Developer"
+        },
+        {
+            "name" : "Jean Claveau",
             "role" : "Developer"
         }
     ],

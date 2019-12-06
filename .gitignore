@@ -5,5 +5,12 @@ composer.lock
 # Binaries
 /bin/phpdoc
 /bin/phpdoc.php
+/bin/phpunit
+/bin/php-parse
 /bin/jsonlint
 /bin/validate-json
+/tests/coverage
+/tests/generated_docs
+.phpunit.result.cache
+ast.dump
+clover.xml
