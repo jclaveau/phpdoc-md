@@ -61,7 +61,7 @@ class Parser
     {
         $classNames = [];
 
-        foreach ($xml->xpath('file/class|file/interface') as $class) {
+        foreach ($xml->xpath('file/class|file/interface|file/trait') as $class) {
             $className = (string)$class->full_name;
             $className = ltrim($className, '\\');
 

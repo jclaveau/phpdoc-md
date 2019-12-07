@@ -3,6 +3,8 @@ namespace PHPDocMD;
 
 class MyClass extends MyParentClass implements MyInterface
 {
+    use MyTrait;
+    
     protected $protectedProperty = 'protected';
     private   $privateProperty   = 'private';
     public    $publicProperty    = 'public';
