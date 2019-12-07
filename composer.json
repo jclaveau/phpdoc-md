@@ -9,7 +9,8 @@
         "twig/twig" : ">=1.2"
     },
     "require-dev" : {
-        "phpdocumentor/phpdocumentor" : ">=2.8",
+        "phpdocumentor/phpdocumentor" : ">=2.9",
+        "jms/serializer": "1.7.*",
         "phpunit/phpunit": ">=5.7"
     },
     "authors" : [
