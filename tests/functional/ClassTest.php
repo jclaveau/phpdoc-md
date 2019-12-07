@@ -35,6 +35,7 @@ class ClassTest extends \AbstractTest
         $this->assertFileExists($config['output_dir'].'/ApiIndex.md');
         $this->assertFileExists($config['output_dir'].'/PHPDocMD-MyClass.md');
         $this->assertFileExists($config['output_dir'].'/PHPDocMD-MyParentClass.md');
+        $this->assertFileExists($config['output_dir'].'/PHPDocMD-MyInterface.md');
     }
 
     /**/
