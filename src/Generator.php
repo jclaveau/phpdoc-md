@@ -31,6 +31,13 @@ class Generator
     protected $classDefinitions;
 
     /**
+     * Use Twig or native PHP
+     *
+     * @var string
+     */
+    protected $templateEngine;
+
+    /**
      * Directory containing the twig templates.
      *
      * @var string
@@ -58,13 +65,14 @@ class Generator
      * @param string $linkTemplate
      * @param string $apiIndexFile
      */
-    function __construct(array $classDefinitions, $outputDir, $templateDir, $linkTemplate = '%c.md', $apiIndexFile = 'ApiIndex.md')
+    function __construct(array $classDefinitions, $outputDir, $templateDir, $linkTemplate = '%c.md', $apiIndexFile = 'ApiIndex.md', $templateEngine = 'php')
     {
         $this->classDefinitions = $classDefinitions;
         $this->outputDir = $outputDir;
         $this->templateDir = $templateDir;
         $this->linkTemplate = $linkTemplate;
         $this->apiIndexFile = $apiIndexFile;
+        $this->templateEngine = $templateEngine;
     }
 
     /**
@@ -72,12 +80,23 @@ class Generator
      */
     function run()
     {
+        $GLOBALS['PHPDocMD_classDefinitions'] = $this->classDefinitions;
+        $GLOBALS['PHPDocMD_linkTemplate'] = $this->linkTemplate;
+        
+        if ($this->templateEngine == 'twig') {
+            $this->renderWithTwig();
+        } elseif ($this->templateEngine == 'php') {
+            $this->renderWithPhp();
+        } else {
+            throw new \Exception("Invalid template engine '{$this->templateEngine}' instead of 'php' or 'twig'");
+        }
+    }
+
+    protected function renderWithTwig()
+    {
         $loader = new Twig_Loader_Filesystem($this->templateDir);
 
         $twig = new Twig_Environment($loader);
-
-        $GLOBALS['PHPDocMD_classDefinitions'] = $this->classDefinitions;
-        $GLOBALS['PHPDocMD_linkTemplate'] = $this->linkTemplate;
 
         $filter = new Twig_SimpleFilter('classLink', ['PHPDocMd\\Generator', 'classLink']);
         $twig->addFilter($filter);
@@ -91,6 +110,41 @@ class Generator
         $index = $this->createIndex();
 
         $index = $twig->render('index.twig',
+            [
+                'index'            => $index,
+                'classDefinitions' => $this->classDefinitions,
+            ]
+        );
+
+        file_put_contents($this->outputDir . '/' . $this->apiIndexFile, $index);
+    }
+
+    protected static function renderFileInPhp($filepath, $data)
+    {
+        ob_start();
+        extract($data);
+        unset($data);
+        require $filepath;
+        $output = ob_get_contents();
+        ob_end_clean();
+        return $output;
+    }
+
+    protected function renderWithPhp()
+    {
+        foreach ($this->classDefinitions as $className => $data) {
+            
+            $output = static::renderFileInPhp(
+                $this->templateDir.'/class.md.php',
+                $data
+            );
+            
+            file_put_contents($this->outputDir . '/' . $data['fileName'], $output);
+        }
+
+        $index = $this->createIndex();
+        $output = static::renderFileInPhp(
+            $this->templateDir.'/index.md.php',
             [
                 'index'            => $index,
                 'classDefinitions' => $this->classDefinitions,
@@ -189,5 +243,19 @@ class Generator
         }
 
         return implode('|', $returnedClasses);
+    }
+    
+    static function indexByDefiner(array $entries)
+    {
+        $entriesByDefiner = [];
+        foreach ($entries as $entry) {
+            if ( ! isset($entriesByDefiner[ $entry['definedBy'] ])) {
+                $entriesByDefiner[ $entry['definedBy'] ] = [];
+            }
+            
+            $entriesByDefiner[ $entry['definedBy'] ][] = $entry;
+        }
+        
+        return $entriesByDefiner;
     }
 }
