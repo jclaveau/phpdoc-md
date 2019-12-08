@@ -94,6 +94,7 @@ class Parser
                 'extends'         => $extends,
                 'isClass'         => $class->getName() === 'class',
                 'isInterface'     => $class->getName() === 'interface',
+                'isTrait'         => $class->getName() === 'trait',
                 'abstract'        => (string)$class['abstract'] == 'true',
                 'deprecated'      => count($class->xpath('docblock/tag[@name="deprecated"]')) > 0,
                 'methods'         => $this->parseMethods($class),
@@ -126,11 +127,14 @@ class Parser
             $methodName = (string)$method->name;
 
             $return = $method->xpath('docblock/tag[@name="return"]');
+            
 
             if (count($return)) {
-                $return = (string)$return[0]['type'];
+                $returnType = (string)$return[0]->type;
+                $returnDescription = (string)$return[0]['description'];
             } else {
-                $return = 'mixed';
+                $returnType = 'mixed';
+                $returnDescription = '';
             }
 
             $arguments = [];
@@ -153,7 +157,11 @@ class Parser
                     }
 
                     if ((string)$tag['description']) {
-                        $nArgument['description'] = (string)$tag['description'];
+                        $nArgument['description'] = preg_replace(
+                            '#(^'.preg_quote('<p>').')|('.preg_quote('</p>').'$)#', 
+                            '',
+                            (string)$tag['description']
+                        );
                     }
 
                     if ((string)$tag['variable']) {
@@ -174,11 +182,12 @@ class Parser
                 return $return;
             }, $arguments));
 
-            $signature = sprintf('%s %s::%s(%s)', $return, $className, $methodName, $argumentStr);
+            $signature = "$returnType $className::$methodName($argumentStr)";
 
             $methods[$methodName] = [
                 'name'        => $methodName,
-                'description' => (string)$method->docblock->description . "\n\n" . (string)$method->docblock->{'long-description'},
+                'description' => (string)$method->docblock->description . "\n\n"
+                                .(string)$method->docblock->{'long-description'},
                 'visibility'  => (string)$method['visibility'],
                 'abstract'    => ((string)$method['abstract']) == "true",
                 'static'      => ((string)$method['static']) == "true",
@@ -186,6 +195,8 @@ class Parser
                 'signature'   => $signature,
                 'arguments'   => $arguments,
                 'definedBy'   => $className,
+                'returnType'  => $returnType,
+                'returnDescription' => $returnDescription,
             ];
         }
 

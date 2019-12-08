@@ -10,7 +10,7 @@ trait MyTrait
         return $this->protectedProperty;
     }
     
-    public function setterOfMyTrait($value)
+    public function setterOfMyTrait(array $value)
     {
         $this->protectedProperty = $value;
     }

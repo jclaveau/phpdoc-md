@@ -14,14 +14,26 @@ class MyClass extends MyParentClass implements MyInterface
         
     }
     
-    public function getter()
+    /**
+     * Getter of protectedProperty.
+     * 
+     * @return string The value of $this->protectedProperty
+     */
+    public function getProtectedProperty() : string
     {
         return $this->protectedProperty;
     }
     
-    public function setter($value)
+    /**
+     * Setter of protectedProperty.
+     * 
+     * @param string $value The value to assign to $this->protectedProperty
+     * @return self The current instance of MyClass
+     */
+    public function setProtectedProperty($value)
     {
         $this->protectedProperty = $value;
+        return $this;
     }
     
     protected function protectedMethod()
