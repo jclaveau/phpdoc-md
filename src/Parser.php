@@ -162,6 +162,8 @@ class Parser
                             '',
                             (string)$tag['description']
                         );
+                        
+                        $nArgument['description'] = trim($nArgument['description']);
                     }
 
                     if ((string)$tag['variable']) {
@@ -186,7 +188,7 @@ class Parser
 
             $methods[$methodName] = [
                 'name'        => $methodName,
-                'description' => (string)$method->docblock->description . "\n\n"
+                'description' => trim((string)$method->docblock->description)
                                 .(string)$method->docblock->{'long-description'},
                 'visibility'  => (string)$method['visibility'],
                 'abstract'    => ((string)$method['abstract']) == "true",
@@ -196,7 +198,7 @@ class Parser
                 'arguments'   => $arguments,
                 'definedBy'   => $className,
                 'returnType'  => $returnType,
-                'returnDescription' => $returnDescription,
+                'returnDescription' => trim($returnDescription),
             ];
         }
 

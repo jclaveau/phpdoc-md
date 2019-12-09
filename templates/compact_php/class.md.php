@@ -85,8 +85,8 @@ if ($methods) {
             
             $fullDescription = [];
             
-            if (trim($method['description'])) {
-                $fullDescription[] = trim($method['description']);
+            if ($method['description']) {
+                $fullDescription[] = $method['description'];
             }
                 
             if ($method['arguments']) {
@@ -96,16 +96,16 @@ if ($methods) {
                     $argumentsDescription[] = ' &#x25FE; '
                         .($argument['type'] ? Generator::classLink($argument['type']) : 'mixed')
                         .' '.$argument['name']
-                        .(isset($argument['description']) && trim($argument['description']) ? ': '.trim($argument['description']) : '')
+                        .( ! empty($argument['description']) ? ': '.$argument['description'] : '')
                         ;
                 }
                 $fullDescription[] = implode("<br>", $argumentsDescription);
             }
             
             # todo use statement
-            if (trim($method['returnDescription'])) {
+            if ($method['returnDescription']) {
                 $fullDescription[] = "Returns a ".HTML::classLink($method['returnType'])
-                    .': '.trim($method['returnDescription'])
+                    .': '.$method['returnDescription']
                     ;
             }
             
