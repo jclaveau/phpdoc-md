@@ -14,7 +14,7 @@ class ClassTest extends \AbstractTest
         $config = [
           'input'        => "$root/tests/generated_docs/structure.xml",
           'output_dir'   => "$root/tests/generated_docs/result",
-          'template_dir' => "$root/templates",
+          'template_dir' => "$root/templates/compact_php",
           'lt'           => '%c.md',
           'index'        => 'ApiIndex.md',
         ];

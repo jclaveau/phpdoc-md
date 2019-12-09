@@ -245,6 +245,29 @@ class Generator
         return implode('|', $returnedClasses);
     }
     
+    /**
+     * This function allows us to easily link classes to their existing pages.
+     *
+     * @param string $className
+     *
+     * @return string The relative URL
+     */
+    static function classUrl($className)
+    {
+        $classDefinitions = $GLOBALS['PHPDocMD_classDefinitions'];
+        $linkTemplate = $GLOBALS['PHPDocMD_linkTemplate'];
+        
+        $returnedClasses = [];
+
+        $className = trim($className, '\\ ');
+
+        if ( ! isset($classDefinitions[$className])) {
+            return null;
+        } else {
+            return $classDefinitions[$className]['fileName'];
+        }
+    }
+    
     static function indexByDefiner(array $entries)
     {
         $entriesByDefiner = [];

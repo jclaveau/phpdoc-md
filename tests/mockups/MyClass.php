@@ -30,7 +30,7 @@ class MyClass extends MyParentClass implements MyInterface
      * @param string $value The value to assign to $this->protectedProperty
      * @return self The current instance of MyClass
      */
-    public function setProtectedProperty($value)
+    public function setProtectedProperty($value, array $options=null)
     {
         $this->protectedProperty = $value;
         return $this;
