@@ -139,7 +139,7 @@ class Generator
                 $data
             );
             
-            file_put_contents($this->outputDir . '/' . $data['fileName'], $output);
+            file_put_contents($this->outputDir . '/' . $data['docFile'], $output);
         }
 
         $index = $this->createIndex();

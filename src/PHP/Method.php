@@ -12,7 +12,8 @@ class Method
     protected $isStatic;
     protected $isDeprecated;
     protected $isDefinedBy;
-    protected $isDefinedAt;
+    protected $file;
+    protected $line;
     protected $returnType = 'mixed';
     protected $returnDescription;
     
@@ -121,17 +122,32 @@ class Method
     
     /**
      */
-    public function isDefinedAt(array $positions=null)
+    public function setFile($file)
     {
-        if ($value !== null) {
-            $this->isDefinedAt = [
-                'start' => reset($positions),
-                'end'   => end($positions),
-            ];
-            return $this;
-        } else {
-            return $this->isDefinedAt;
-        }
+        $this->file = $file;
+        return $this;
+    }
+    
+    /**
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+    
+    /**
+     */
+    public function setLine($line)
+    {
+        $this->line = $line;
+        return $this;
+    }
+    
+    /**
+     */
+    public function getLine()
+    {
+        return $this->line;
     }
     
     /**
@@ -199,6 +215,14 @@ class Method
         }, $this->arguments));
         
         return $argumentStr;
+    }
+
+    /**
+     */
+    public function generateCodeUrl()
+    {
+        // /blob/master/src/DeferredCallChain.php#L9
+        return $this->file.'#'.$this->line;
     }
 
     /**/

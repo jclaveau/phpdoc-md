@@ -7,11 +7,12 @@ class ClassTest extends \AbstractTest
 {
     /**
      */
-    public function test_new_()
+    public function test_render()
     {
         // Run PHPdoc-MD
         $root = __DIR__ . '/../..';
         $config = [
+          'source_dir'   => "../../mockups",
           'input'        => "$root/tests/generated_docs/structure.xml",
           'output_dir'   => "$root/tests/generated_docs/result",
           'template_dir' => "$root/templates/compact_php",
@@ -24,7 +25,7 @@ class ClassTest extends \AbstractTest
         }
 
         $generator = new \PHPDocMD\Generator(
-            (new \PHPDocMD\Parser($config['input']))->run(),
+            (new \PHPDocMD\Parser($config['input'], $config['source_dir']))->run(),
             $config['output_dir'],
             $config['template_dir'],
             $config['lt'],

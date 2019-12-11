@@ -25,19 +25,19 @@ use PHPDocMD\PHP\Helpers as PHP;
 <?= $longDescription ?>
 
 <?php if ($extends) { ?>
-Extends: <?= implode(', ', array_map(Generator::class.'::classLink', $extends)) ?>
+Extends: <?= implode(', ', array_map(HTML::class.'::classDocLink', $extends)) ?>
 <?php } ?>
 
 
 <?php if ($implements) { ?>
-Implements: <?= implode(', ', array_map(Generator::class.'::classLink', $implements)) ?>
+Implements: <?= implode(', ', array_map(HTML::class.'::classDocLink', $implements)) ?>
 <?php } ?>
 
 <?php
 if ($constants) {
     echo "## Constants\n";
 
-    foreach (Generator::indexByDefiner($constants) as $definer => $constants) {
+    foreach (PHP::indexByDefiner($constants) as $definer => $constants) {
         echo $definer != $className ? "    Defined by: $definer\n\n" : '';
         
         foreach ($constants as $constant) {
@@ -54,7 +54,7 @@ if ($properties) {
 
     foreach (Generator::indexByDefiner($properties) as $definer => $properties) {
         echo $definer != $className 
-            ? "\n    Defined by: ".Generator::classLink($definer)."\n" 
+            ? "\n    Defined by: ".Generator::classDocLink($definer)."\n" 
             : '';
         
         foreach ($properties as $property) {
@@ -74,12 +74,12 @@ if ($methods) {
 
     foreach (PHP::indexByDefiner($methods) as $definer => $methods) {
         echo $definer != $className 
-            ? "\n### Defined by: ".Generator::classLink($definer)."\n" 
+            ? "\n### Defined by: ".HTML::classDocLink($definer)."\n" 
             : '';
         
         foreach ($methods as $method) {
             // echo '#### <code>'.$method['signature'].'</code>'
-            echo '#### - '.MD::anchor("<code style=\"background-color: white; color: inherit;\">{$method->printSignature()}</code>")
+            echo '#### - '.HTML::link($method->generateCodeUrl(), "<code style=\"background-color: white; color: inherit;\">{$method->printSignature()}</code>")
                 // ."{#".MD::anchorId($method['signature'])."}"
                 .($method->isDeprecated() ? ' /!\ Deprecated /!\ ' : '')
                 ."\n";
@@ -95,7 +95,7 @@ if ($methods) {
                 foreach ($method->getArguments() as $argument) {
                     // $argumentsDescription[] = ' &#43; '
                     $argumentsDescription[] = ' &#x25FE; '
-                        .($argument['type'] ? Generator::classLink($argument['type']) : 'mixed')
+                        .($argument['type'] ? HTML::classDocLink($argument['type']) : 'mixed')
                         .' '.$argument['name']
                         .( ! empty($argument['description']) ? ': '.$argument['description'] : '')
                         ;
@@ -105,7 +105,7 @@ if ($methods) {
             
             # todo use statement
             if ($method->getReturnDescription()) {
-                $fullDescription[] = "Returns a ".HTML::classLink($method->getReturnType())
+                $fullDescription[] = "Returns a ".HTML::classDocLink($method->getReturnType())
                     .': '.$method->getReturnDescription()
                     ;
             }
@@ -113,10 +113,6 @@ if ($methods) {
             if ($fullDescription) {
                 echo "<blockquote><pre><code>".implode("<br><br>", $fullDescription)."</code></pre></blockquote>\n\n\n";
             }
-            // echo "<a href='rtyu'>tatata</a></code></pre></blockquote>\n\n\n";
-            // echo "    lalal\n\n\n";
-            // echo " > lalal\n\n\n";
-            // echo " > lalal\n\n\n";
         }
     }
 }

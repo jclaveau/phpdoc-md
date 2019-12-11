@@ -14,6 +14,13 @@ use SimpleXMLElement;
 class Parser
 {
     /**
+     * The directory on which PHPDoc has been run
+     *
+     * @var string
+     */
+    protected $sourceDir;
+
+    /**
      * Path to the structure.xml file.
      *
      * @var string
@@ -29,10 +36,12 @@ class Parser
 
     /**
      * @param string $structureXmlFile
+     * @param string $sourceDir
      */
-    function __construct($structureXmlFile)
+    function __construct($structureXmlFile, $sourceDir)
     {
         $this->structureXmlFile = $structureXmlFile;
+        $this->sourceDir = $sourceDir;
     }
 
     /**
@@ -61,46 +70,57 @@ class Parser
     {
         $classNames = [];
 
-        foreach ($xml->xpath('file/class|file/interface|file/trait') as $class) {
-            $className = (string)$class->full_name;
-            $className = ltrim($className, '\\');
+        foreach ($xml->xpath('file') as $file) {
+            $path = (string) $file['path'];
+            $package = (string) $file['package'];
+            $errors = $file->parse_markers;
+            
+            foreach ($file->xpath('class|interface|trait') as $xmlClass) {
+                $className = (string)$xmlClass->full_name;
+                $className = ltrim($className, '\\');
 
-            $fileName = str_replace('\\', '-', $className) . '.md';
+                $docFileName = str_replace('\\', '-', $className) . '.md';
 
-            $implements = [];
+                $implements = [];
 
-            if (isset($class->implements)) {
-                foreach ($class->implements as $interface) {
-                    $implements[] = ltrim((string)$interface, '\\');
+                if (isset($xmlClass->implements)) {
+                    foreach ($xmlClass->implements as $interface) {
+                        $implements[] = ltrim((string)$interface, '\\');
+                    }
                 }
-            }
 
-            $extends = [];
+                $extends = [];
 
-            if (isset($class->extends)) {
-                foreach ($class->extends as $parent) {
-                    $extends[] = ltrim((string)$parent, '\\');
+                if (isset($xmlClass->extends)) {
+                    foreach ($xmlClass->extends as $parent) {
+                        $extends[] = ltrim((string)$parent, '\\');
+                    }
                 }
-            }
 
-            $classNames[$className] = [
-                'fileName'        => $fileName,
-                'className'       => $className,
-                'shortClass'      => (string)$class->name,
-                'namespace'       => (string)$class['namespace'],
-                'description'     => (string)$class->docblock->description,
-                'longDescription' => (string)$class->docblock->{'long-description'},
-                'implements'      => $implements,
-                'extends'         => $extends,
-                'isClass'         => $class->getName() === 'class',
-                'isInterface'     => $class->getName() === 'interface',
-                'isTrait'         => $class->getName() === 'trait',
-                'abstract'        => (string)$class['abstract'] == 'true',
-                'deprecated'      => count($class->xpath('docblock/tag[@name="deprecated"]')) > 0,
-                'methods'         => $this->parseMethods($class),
-                'properties'      => $this->parseProperties($class),
-                'constants'       => $this->parseConstants($class),
-            ];
+                $class = [
+                    'path'            => $this->sourceDir.'/'.$path,
+                    'package'         => $package,
+                    'docFile'         => $docFileName,
+                    'className'       => $className,
+                    'shortClass'      => (string)$xmlClass->name,
+                    'namespace'       => (string)$xmlClass['namespace'],
+                    'description'     => (string)$xmlClass->docblock->description,
+                    'longDescription' => (string)$xmlClass->docblock->{'long-description'},
+                    'implements'      => $implements,
+                    'extends'         => $extends,
+                    'isClass'         => $xmlClass->getName() === 'class',
+                    'isInterface'     => $xmlClass->getName() === 'interface',
+                    'isTrait'         => $xmlClass->getName() === 'trait',
+                    'abstract'        => (string)$xmlClass['abstract'] == 'true',
+                    'deprecated'      => count($xmlClass->xpath('docblock/tag[@name="deprecated"]')) > 0,
+                ];
+                
+                $class['methods']    = $this->parseMethods($xmlClass, $class);
+                $class['properties'] = $this->parseProperties($xmlClass, $class);
+                $class['constants']  = $this->parseConstants($xmlClass, $class);
+                
+                $classNames[$className] = $class;
+            }
         }
 
         $this->classDefinitions = $classNames;
@@ -116,14 +136,13 @@ class Parser
      *
      * @return array
      */
-    protected function parseMethods(SimpleXMLElement $class)
+    protected function parseMethods(SimpleXMLElement $xmlClass, array $class)
     {
-        $methods = [];
-
-        $className = (string)$class->full_name;
+        $className = (string)$xmlClass->full_name;
         $className = ltrim($className, '\\');
-
-        foreach ($class->method as $method) {
+        
+        $methods = [];
+        foreach ($xmlClass->method as $method) {
             $methodName = (string)$method->name;
 
             $return = $method->xpath('docblock/tag[@name="return"]');
@@ -181,10 +200,12 @@ class Parser
                 ->setVisibility($method['visibility'])
                 ->isAbstract( ((string)$method['abstract']) == "true")
                 ->isStatic( ((string)$method['static']) == "true")
-                ->isDeprecated( count($class->xpath('docblock/tag[@name="deprecated"]')) > 0)
+                ->isDeprecated( count($xmlClass->xpath('docblock/tag[@name="deprecated"]')) > 0)
                 ->isDefinedBy($className)
                 ->setReturnType($returnType)
                 ->setReturnDescription($returnDescription)
+                ->setFile($class['path'])
+                ->setLine((string)$method['line'])
                 ;
                 
         }
