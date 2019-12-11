@@ -10,7 +10,7 @@ composer.lock
 /bin/jsonlint
 /bin/validate-json
 /tests/coverage
-/tests/generated_docs
+/tests/generated_docs/phpdoc-cache*
 .phpunit.result.cache
 ast.dump
 clover.xml
