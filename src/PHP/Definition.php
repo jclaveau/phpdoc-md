@@ -116,7 +116,7 @@ abstract class Definition
     public function generateCodeUrl()
     {
         // /blob/master/src/DeferredCallChain.php#L9
-        return $this->file.'#'.$this->line;
+        return $this->file.'#L'.$this->line;
     }
 
     /**/
