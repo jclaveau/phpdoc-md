@@ -128,7 +128,7 @@ if ($methods) {
             }
             
             if ($fullDescription) {
-                echo "<blockquote><pre><code>".implode("<br><br>", $fullDescription)."</code></pre></blockquote>\n\n\n";
+                echo "<blockquote><pre>".implode("<br><br>", $fullDescription)."</pre></blockquote>\n\n\n";
             }
         }
     }
