@@ -91,10 +91,14 @@ class Helpers
      */
     static function definitionParts($definitionPath)
     {
-        preg_match('#^([^:])?([^:\\])::([^\(]])#', $definitionPath, $matches);
+        // $definitionPath = "PHPDocMD\MyParentClass::lalala(lolo)";
+        preg_match('#^([^:]+\\\\)?([^:]+)(::([^\(]+))?#', $definitionPath, $matches);
         // var_dump($matches);
-        var_dump($matches);
-        exit;
+        return [
+            'namespace' => $matches[1],
+            'definer'   => $matches[2],
+            'name'      => isset($matches[4]) ? $matches[4] : '',
+        ];
     }
     
     

@@ -1,13 +1,25 @@
 <?php
 namespace PHPDocMD\PHP;
 
+/**
+ * A trait, a class or an interface.
+ */
 abstract class Definition
 {
+    protected $namespace;
     protected $name;
     protected $description;
     protected $isDeprecated;
     protected $file;
     protected $line;
+    
+    /**
+     */
+    public function setNamespace($namespace)
+    {
+        $this->namespace = trim($namespace);
+        return $this;
+    }
     
     /**
      */
@@ -85,20 +97,16 @@ abstract class Definition
     
     /**
      */
-    public function printSignature(array $options=null)
+    public function generateSignature(array $options=null)
     {
-        $definer = ! is_array($options) || ! in_array('absolute', $options)
-            ? Helpers::getRelativeNamespace($this->isDefinedBy(), $this->getNamespace())
-            : $this->isDefinedBy();
+        $signature = $this->namespace.'\\'.$this->name;
         
-        $signature = '';
-        
-        if ($this->returnType) {
-            $signature .= $this->returnType.' ';
+        if (! is_array($options) || ! in_array('absolute', $options)) {
+            $signature = Helpers::getRelativeNamespace(
+                $signature, 
+                $this->getNamespace()
+            );
         }
-        
-        $signature .= $definer.'::'.$this->name
-            .'('.$this->printFunctionArguments().')';
         
         return $signature;
     }

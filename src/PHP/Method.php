@@ -64,7 +64,8 @@ class Method extends Definition
     public function isDefinedBy($value=null)
     {
         if ($value !== null) {
-            $this->isDefinedBy = (string) $value;
+            $this->namespace = Helpers::definitionParts($value)['namespace'];
+            $this->isDefinedBy = $value; 
             return $this;
         } else {
             return $this->isDefinedBy;
@@ -103,7 +104,7 @@ class Method extends Definition
     
     /**
      */
-    public function printSignature(array $options=null)
+    public function generateSignature(array $options=null)
     {
         $definer = ! is_array($options) || ! in_array('absolute', $options)
             ? Helpers::getRelativeNamespace($this->isDefinedBy(), $this->getNamespace())
