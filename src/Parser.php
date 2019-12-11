@@ -174,32 +174,19 @@ class Parser
                 $arguments[] = $nArgument;
             }
 
-            $argumentStr = implode(', ', array_map(function($argument) {
-                $return = $argument['name'];
-
-                if ($argument['type']) {
-                    $return = $argument['type'] . ' ' . $return;
-                }
-
-                return $return;
-            }, $arguments));
-
-            $signature = "$returnType $className::$methodName($argumentStr)";
-
-            $methods[$methodName] = [
-                'name'        => $methodName,
-                'description' => trim((string)$method->docblock->description)
-                                .(string)$method->docblock->{'long-description'},
-                'visibility'  => (string)$method['visibility'],
-                'abstract'    => ((string)$method['abstract']) == "true",
-                'static'      => ((string)$method['static']) == "true",
-                'deprecated'  => count($class->xpath('docblock/tag[@name="deprecated"]')) > 0,
-                'signature'   => $signature,
-                'arguments'   => $arguments,
-                'definedBy'   => $className,
-                'returnType'  => $returnType,
-                'returnDescription' => trim($returnDescription),
-            ];
+            $methods[$methodName] = (new PHP\Method)
+                ->setName($methodName)
+                ->setArguments($arguments)
+                ->setDescription($method->docblock->description . $method->docblock->{'long-description'})
+                ->setVisibility($method['visibility'])
+                ->isAbstract( ((string)$method['abstract']) == "true")
+                ->isStatic( ((string)$method['static']) == "true")
+                ->isDeprecated( count($class->xpath('docblock/tag[@name="deprecated"]')) > 0)
+                ->isDefinedBy($className)
+                ->setReturnType($returnType)
+                ->setReturnDescription($returnDescription)
+                ;
+                
         }
 
         return $methods;

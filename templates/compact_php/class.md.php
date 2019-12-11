@@ -3,6 +3,7 @@ namespace PHPDocMD;
 
 use PHPDocMD\MarkdownHelpers as MD;
 use PHPDocMD\HTMLHelpers as HTML;
+use PHPDocMD\PHP\Helpers as PHP;
 
 /**
  * HTML elements allowed in github: https://github.com/jch/html-pipeline/blob/master/lib/html/pipeline/sanitization_filter.rb
@@ -71,27 +72,27 @@ if ($properties) {
 if ($methods) {
     echo "## Methods\n";
 
-    foreach (Generator::indexByDefiner($methods) as $definer => $methods) {
+    foreach (PHP::indexByDefiner($methods) as $definer => $methods) {
         echo $definer != $className 
             ? "\n### Defined by: ".Generator::classLink($definer)."\n" 
             : '';
         
         foreach ($methods as $method) {
             // echo '#### <code>'.$method['signature'].'</code>'
-            echo '#### - '.MD::anchor("<code style=\"background-color: white; color: inherit;\">{$method['signature']}</code>")
+            echo '#### - '.MD::anchor("<code style=\"background-color: white; color: inherit;\">{$method->printSignature()}</code>")
                 // ."{#".MD::anchorId($method['signature'])."}"
-                .($method['deprecated'] ? ' /!\ Deprecated /!\ ' : '')
+                .($method->isDeprecated() ? ' /!\ Deprecated /!\ ' : '')
                 ."\n";
             
             $fullDescription = [];
             
-            if ($method['description']) {
-                $fullDescription[] = $method['description'];
+            if ($method->getDescription()) {
+                $fullDescription[] = $method->getDescription();
             }
                 
-            if ($method['arguments']) {
+            if ($method->getArguments()) {
                 $argumentsDescription = ["Parameters:"];
-                foreach ($method['arguments'] as $argument) {
+                foreach ($method->getArguments() as $argument) {
                     // $argumentsDescription[] = ' &#43; '
                     $argumentsDescription[] = ' &#x25FE; '
                         .($argument['type'] ? Generator::classLink($argument['type']) : 'mixed')
@@ -103,9 +104,9 @@ if ($methods) {
             }
             
             # todo use statement
-            if ($method['returnDescription']) {
-                $fullDescription[] = "Returns a ".HTML::classLink($method['returnType'])
-                    .': '.$method['returnDescription']
+            if ($method->getReturnDescription()) {
+                $fullDescription[] = "Returns a ".HTML::classLink($method->getReturnType())
+                    .': '.$method->getReturnDescription()
                     ;
             }
             

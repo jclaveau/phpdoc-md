@@ -20,7 +20,7 @@ class HTMLHelpers
         if (in_array($className, ['string', 'array', 'float', 'integer', 'boolean', 'iterable', 'object', 'resource', 'null', 'callable'])) {
             $link = "https://www.php.net/manual/en/language.types.$className.php";
             $target = "_blank";
-        } elseif (! $link = Generator::classUrl($className)) {
+        } elseif (! $link = PHP\Helpers::classUrl($className)) {
             return $className;
         }
 
