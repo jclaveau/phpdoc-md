@@ -47,12 +47,18 @@ class Helpers
         }
     }
     
-    static function getRelativeNamespace(array $namespace, $referenceNamespace)
+    static function getRelativeNamespace($namespace, $referenceNamespace)
     {
         if (strpos($namespace, 0, 1) == '\\') {
             return $namespace; // already relative
         }
         
-        return preg_replace("#^".preg_quote($referenceNamespace, '#')."\#", $namespace, '');
+        $relativeNamespace = preg_replace(
+            $rgxp = "#^".preg_quote($referenceNamespace.'\\', '#')."#", 
+            '',
+            $namespace
+        );
+        
+        return $relativeNamespace;
     }
 }

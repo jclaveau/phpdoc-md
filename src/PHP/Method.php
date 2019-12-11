@@ -112,6 +112,15 @@ class Method
     
     /**
      */
+    public function getNamespace()
+    {
+        $parts = explode('\\', $this->isDefinedBy);
+        array_pop($parts);
+        return implode('\\', $parts);
+    }
+    
+    /**
+     */
     public function isDefinedAt(array $positions=null)
     {
         if ($value !== null) {
@@ -159,9 +168,9 @@ class Method
      */
     public function printSignature(array $options=null)
     {
-        $name = ! empty($options['currentNamespace'])
-            ? Helpers::getRelativeNamespace($this->name, $options['currentNamespace'])
-            : $this->name;
+        $definer = ! is_array($options) || ! in_array('absolute', $options)
+            ? Helpers::getRelativeNamespace($this->isDefinedBy(), $this->getNamespace())
+            : $this->isDefinedBy();
         
         $signature = '';
         
@@ -169,7 +178,7 @@ class Method
             $signature .= $this->returnType.' ';
         }
         
-        $signature .= $this->isDefinedBy().'::'.$this->name
+        $signature .= $definer.'::'.$this->name
             .'('.$this->printFunctionArguments().')';
         
         return $signature;
