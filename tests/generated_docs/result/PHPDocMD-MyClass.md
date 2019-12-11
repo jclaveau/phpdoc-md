@@ -2,9 +2,24 @@
 # PHPDocMD \ MyClass
 
 
-Extends: <a href='PHPDocMD-MyParentClass.md' >PHPDocMD\MyParentClass</a>
+<!-- Mardown tables do not handle tables without column names -->
+<table>
+    <tbody>
+        <tr>
+            <th>Namespace</th>
+            <td>PHPDocMD</td>
+        </tr>
+                    <tr>
+                <th>Extends</th>
+                <td><a href='PHPDocMD-MyParentClass.md' >PHPDocMD\MyParentClass</a></td>
+            </tr>
+                            <tr>
+                <th>Implements</th>
+                <td><a href='PHPDocMD-MyInterface.md' >PHPDocMD\MyInterface</a></td>
+            </tr>
+            </tbody>
+</table>
 
-Implements: <a href='PHPDocMD-MyInterface.md' >PHPDocMD\MyInterface</a>
 
 
 ## Methods

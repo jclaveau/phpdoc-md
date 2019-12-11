@@ -2,8 +2,19 @@
 # asbtract PHPDocMD \ MyParentClass
 
 
-Extends: 
-
+<!-- Mardown tables do not handle tables without column names -->
+<table>
+    <tbody>
+        <tr>
+            <th>Namespace</th>
+            <td>PHPDocMD</td>
+        </tr>
+                    <tr>
+                <th>Extends</th>
+                <td></td>
+            </tr>
+                    </tbody>
+</table>
 
 
 

@@ -24,14 +24,27 @@ use PHPDocMD\PHP\Helpers as PHP;
 
 <?= $longDescription ?>
 
-<?php if ($extends) { ?>
-Extends: <?= implode(', ', array_map(HTML::class.'::classDocLink', $extends)) ?>
-<?php } ?>
-
-
-<?php if ($implements) { ?>
-Implements: <?= implode(', ', array_map(HTML::class.'::classDocLink', $implements)) ?>
-<?php } ?>
+<!-- Mardown tables do not handle tables without column names -->
+<table>
+    <tbody>
+        <tr>
+            <th>Namespace</th>
+            <td><?= $namespace ?></td>
+        </tr>
+        <?php if ($extends) { ?>
+            <tr>
+                <th>Extends</th>
+                <td><?= implode(',<br>', array_map(HTML::class.'::classDocLink', $extends)) ?></td>
+            </tr>
+        <?php } ?>
+        <?php if ($implements) { ?>
+            <tr>
+                <th>Implements</th>
+                <td><?= implode(',<br>', array_map(HTML::class.'::classDocLink', $implements)) ?></td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
 
 <?php
 if ($constants) {
@@ -91,6 +104,10 @@ if ($methods) {
             }
                 
             if ($method->getArguments()) {
+                
+
+                
+                
                 $argumentsDescription = ["Parameters:"];
                 foreach ($method->getArguments() as $argument) {
                     // $argumentsDescription[] = ' &#43; '
