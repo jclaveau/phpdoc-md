@@ -31,6 +31,13 @@ abstract class Definition
     
     /**
      */
+    public function getName()
+    {
+        return $this->name;
+    }
+    
+    /**
+     */
     public function setDescription($description)
     {
         $this->description = trim( (string) $description );

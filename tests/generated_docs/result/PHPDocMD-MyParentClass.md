@@ -20,7 +20,7 @@
 
 ## Methods
 #### - <a href='../../mockups/MyAbstractParentClass.php#L8'>mixed MyParentClass::getter()</a>
-#### - <a href='../../mockups/MyAbstractParentClass.php#L13'>mixed MyParentClass::setter($value)</a>
+#### - <a href='../../mockups/MyAbstractParentClass.php#L13'>mixed MyParentClass::setter()</a>
 <blockquote><pre>Parameters:<br> &#x25FE; mixed $value</pre></blockquote>
 
 

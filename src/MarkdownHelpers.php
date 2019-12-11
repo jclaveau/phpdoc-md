@@ -33,15 +33,27 @@ class MarkdownHelpers
     {
         $tree = [];
 
-        foreach ($definitions as $className => $classInfo) {
+        foreach ($definitions as $definerName => $info) {
             $current = & $tree;
 
-            foreach (array_filter(explode('\\', $className)) as $part) {
+            foreach (array_filter(explode('\\', $definerName)) as $part) {
                 if (!isset($current[$part])) {
                     $current[$part] = [];
                 }
 
                 $current = & $current[$part];
+            }
+            
+            
+            $current = [];
+            
+            $current['Constants'] = [];
+            $current['Properties'] = [];
+            
+            foreach ($info['methods'] as $method) {
+                if ($definerName == $method->isDefinedBy()) {
+                    $current[ $method->getName().'()' ] = [];
+                }
             }
         }
         

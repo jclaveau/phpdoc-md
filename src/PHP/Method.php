@@ -122,7 +122,11 @@ class Method extends Definition
         }
         
         $signature .= $definer.'::'.$this->name
-            .'('.$this->printFunctionArguments().')';
+            .'('
+            .( ( ! is_array($options) || in_array('no_arguments', $options))
+                ? ''
+                : $this->printFunctionArguments() )
+            .')';
         
         return $signature;
     }
