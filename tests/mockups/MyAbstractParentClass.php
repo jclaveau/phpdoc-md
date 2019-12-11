@@ -5,12 +5,12 @@ abstract class MyParentClass
 {
     protected static $myStaticProperty;
     
-    public static function getter()
+    public static function getStaticProperty()
     {
         return self::$myStaticProperty;
     }
     
-    public static function setter($value)
+    final public static function setStaticProperty($value)
     {
         return self::$myStaticProperty = $value;
     }

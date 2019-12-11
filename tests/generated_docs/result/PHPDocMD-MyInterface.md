@@ -15,4 +15,4 @@
 
 
 ## Methods
-#### - <a href='../../mockups/MyInterface.php#L6'>mixed MyInterface::methodOfMyInterface()</a>
+#### - <a href='../../mockups/MyInterface.php#L6'>public MyInterface::methodOfMyInterface()</a>

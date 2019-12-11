@@ -19,8 +19,8 @@
 
 
 ## Methods
-#### - <a href='../../mockups/MyAbstractParentClass.php#L8'>mixed MyParentClass::getter()</a>
-#### - <a href='../../mockups/MyAbstractParentClass.php#L13'>mixed MyParentClass::setter()</a>
+#### - <a href='../../mockups/MyAbstractParentClass.php#L8'>public static MyParentClass::getStaticProperty()</a>
+#### - <a href='../../mockups/MyAbstractParentClass.php#L13'>final public static MyParentClass::setStaticProperty()</a>
 <blockquote><pre>Parameters:<br> &#x25FE; mixed $value</pre></blockquote>
 
 

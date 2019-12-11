@@ -2,8 +2,8 @@
     * <a href='PHPDocMD-MyParentClass.md' >MyParentClass</a>
         * Constants
         * Properties
-        * getter()
-        * setter()
+        * getStaticProperty()
+        * setStaticProperty()
     * <a href='PHPDocMD-MyTrait.md' >MyTrait</a>
         * Constants
         * Properties

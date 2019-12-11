@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project title="API Documentation" version="2.8.5">
   <partials/>
-  <file path="MyAbstractParentClass.php" generated-path="MyAbstractParentClass.html" hash="31d495b0d256a8677ec40451fdcdbdad" package="Default">
+  <file path="MyAbstractParentClass.php" generated-path="MyAbstractParentClass.html" hash="01993425dd07a629fa26a51742fd8909" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
@@ -26,16 +26,16 @@
         </docblock>
       </property>
       <method final="false" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="8" package="Default">
-        <name>getter</name>
-        <full_name>\PHPDocMD\MyParentClass::getter()</full_name>
+        <name>getStaticProperty</name>
+        <full_name>\PHPDocMD\MyParentClass::getStaticProperty()</full_name>
         <docblock line="8">
           <description></description>
           <long-description></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="13" package="Default">
-        <name>setter</name>
-        <full_name>\PHPDocMD\MyParentClass::setter()</full_name>
+      <method final="true" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="13" package="Default">
+        <name>setStaticProperty</name>
+        <full_name>\PHPDocMD\MyParentClass::setStaticProperty()</full_name>
         <docblock line="13">
           <description></description>
           <long-description></long-description>
@@ -50,12 +50,12 @@
     <parse_markers>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
       <error line="4" code="PPC:ERR-50005">No summary for class \PHPDocMD\MyParentClass</error>
-      <error line="8" code="PPC:ERR-50008">No summary for method getter()</error>
-      <error line="13" code="PPC:ERR-50015">Argument $value is missing from the Docblock of setter</error>
-      <error line="13" code="PPC:ERR-50008">No summary for method setter()</error>
+      <error line="8" code="PPC:ERR-50008">No summary for method getStaticProperty()</error>
+      <error line="13" code="PPC:ERR-50015">Argument $value is missing from the Docblock of setStaticProperty</error>
+      <error line="13" code="PPC:ERR-50008">No summary for method setStaticProperty()</error>
       <error line="6" code="PPC:ERR-50007">No summary for property $myStaticProperty</error>
     </parse_markers>
-    <source>eJyVjUEKwjAQRfc5xSy60Cu0igu7cFMI9ATTONVCmoTJRCjSu9s2uhTxr2bg/fcPp3APyuFIMaAh0Bdde9PUlVLYRWE0AsZijNBMGpmcnNdPPRUsCeyFjNAVoqAMBopxardLsw/EMlUbl+HU2QV5k31yRgbv4EYixLv9xmTtGiZJ7CCS7cvyi3b+KY9ZXjzQJvpvAo6Qa5+tWb0AjPpfHg==</source>
+    <source>eJyVzc0KwjAMwPF7nyKHHfQVNsWDO3gZFHyCrGY66NrSpMKQvbv7UERkB3NK4B9+u0O4BeWwIw5oCPRJl95UZaEU1iwRjYCxyAxVrzGSk+N0qYeCcUL0QkboAiworYGs68/zpqMPFKUv5m6JU23H5FU2yRlpvYMryffLZjvnizBNJEnRAZNt8nxFGD5O0zq0axr/aNkdbaL/TNjD8vbGB/UE2+9qTA==</source>
   </file>
   <file path="MyTrait.php" generated-path="MyTrait.html" hash="88ece57fdf076dd9ba0ffc41ac810f6b" package="Default">
     <docblock line="0">
@@ -250,17 +250,17 @@
         <inherited_from>\PHPDocMD\MyTrait</inherited_from>
       </method>
       <method final="false" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="8" package="Default">
-        <name>getter</name>
-        <full_name>\PHPDocMD\MyParentClass::getter()</full_name>
+        <name>getStaticProperty</name>
+        <full_name>\PHPDocMD\MyParentClass::getStaticProperty()</full_name>
         <docblock line="8">
           <description></description>
           <long-description></long-description>
         </docblock>
         <inherited_from>\PHPDocMD\MyParentClass</inherited_from>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="13" package="Default">
-        <name>setter</name>
-        <full_name>\PHPDocMD\MyParentClass::setter()</full_name>
+      <method final="true" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="13" package="Default">
+        <name>setStaticProperty</name>
+        <full_name>\PHPDocMD\MyParentClass::setStaticProperty()</full_name>
         <docblock line="13">
           <description></description>
           <long-description></long-description>

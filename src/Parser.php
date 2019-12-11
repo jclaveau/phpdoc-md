@@ -186,14 +186,15 @@ class Parser
 
                 $arguments[] = $nArgument;
             }
-
+            
             $methods[$methodName] = (new PHP\Method)
                 ->setName($methodName)
                 ->setArguments($arguments)
                 ->setDescription($method->docblock->description . $method->docblock->{'long-description'})
-                ->setVisibility($method['visibility'])
+                ->setVisibility((string) $method['visibility'])
                 ->isAbstract( ((string)$method['abstract']) == "true")
                 ->isStatic( ((string)$method['static']) == "true")
+                ->isFinal( ((string)$method['final']) == "true")
                 ->isDeprecated( count($xmlClass->xpath('docblock/tag[@name="deprecated"]')) > 0)
                 ->isDefinedBy($className)
                 ->setReturnType($returnType)

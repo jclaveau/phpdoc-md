@@ -1,14 +1,11 @@
 <?php
 namespace PHPDocMD\PHP;
 
-class Method extends Definition
+class Method extends AttributeDefinition
 {
-    protected $definedBy;
     protected $arguments;
-    protected $visibility;
     protected $isAbstract;
-    protected $isStatic;
-    protected $isDefinedBy;
+    protected $isFinal;
     protected $returnType = 'mixed';
     protected $returnDescription;
     
@@ -29,14 +26,6 @@ class Method extends Definition
     
     /**
      */
-    public function setVisibility($visibility)
-    {
-        $this->visibility = (bool) $visibility;
-        return $this;
-    }
-    
-    /**
-     */
     public function isAbstract($value=null)
     {
         if ($value !== null) {
@@ -49,26 +38,13 @@ class Method extends Definition
     
     /**
      */
-    public function isStatic($value)
+    public function isFinal($value=null)
     {
         if ($value !== null) {
-            $this->isStatic = (bool) $value;
+            $this->isFinal = (bool) $value;
             return $this;
         } else {
-            return $this->isStatic;
-        }
-    }
-    
-    /**
-     */
-    public function isDefinedBy($value=null)
-    {
-        if ($value !== null) {
-            $this->namespace = Helpers::definitionParts($value)['namespace'];
-            $this->isDefinedBy = $value; 
-            return $this;
-        } else {
-            return $this->isDefinedBy;
+            return $this->isFinal;
         }
     }
     
@@ -117,8 +93,14 @@ class Method extends Definition
         
         $signature = '';
         
-        if ($returnType) {
-            $signature .= $returnType.' ';
+        if ($this->isFinal()) {
+            $signature .= 'final ';
+        }
+        
+        $signature .= $this->visibility.' ';
+        
+        if ($this->isStatic()) {
+            $signature .= 'static ';
         }
         
         $signature .= $definer.'::'.$this->name
@@ -126,7 +108,9 @@ class Method extends Definition
             .( ( ! is_array($options) || in_array('no_arguments', $options))
                 ? ''
                 : $this->printFunctionArguments() )
-            .')';
+            .')'
+            .($returnType != 'mixed' ? ' : '.$returnType : '')
+            ;
         
         return $signature;
     }
