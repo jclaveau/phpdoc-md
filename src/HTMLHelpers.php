@@ -21,17 +21,21 @@ class HTMLHelpers
         return "<a href='$link'>$name</a>";
     }
     
-    public static function classDocLink($className)
+    public static function classDocLink($className, $label=null)
     {
+        if ( ! $label) {
+            $label = $className;
+        }
+        
         // https://www.php.net/manual/en/language.types.php
         $target = null;
         if (in_array($className, ['string', 'array', 'float', 'integer', 'boolean', 'iterable', 'object', 'resource', 'null', 'callable'])) {
             $link = "https://www.php.net/manual/en/language.types.$className.php";
             $target = "_blank";
         } elseif (! $link = PHP\Helpers::classDocUrl($className)) {
-            return $className;
+            return $label;
         }
 
-        return "<a href='$link' ".($target ? "target='".$target."'" : '').">$className</a>";
+        return "<a href='$link' ".($target ? "target='".$target."'" : '').">$label</a>";
     }
 }

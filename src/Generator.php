@@ -6,6 +6,9 @@ use Twig_Environment;
 use Twig_Loader_Filesystem;
 use Twig_SimpleFilter;
 
+
+use PHPDocMD\MarkdownHelpers as MD;
+
 /**
  * This class takes the output from 'parser', and generate the markdown
  * templates.
@@ -107,12 +110,12 @@ class Generator
             file_put_contents($this->outputDir . '/' . $data['fileName'], $output);
         }
 
-        $index = $this->createIndex();
+        $index = MD::createIndex($this->classDefinitions);
 
         $index = $twig->render('index.twig',
             [
                 'index'            => $index,
-                'classDefinitions' => $this->classDefinitions,
+                // 'classDefinitions' => $this->classDefinitions,
             ]
         );
 
@@ -141,68 +144,17 @@ class Generator
             
             file_put_contents($this->outputDir . '/' . $data['docFile'], $output);
         }
-
-        $index = $this->createIndex();
+        
+        $index = MD::createIndex($this->classDefinitions);
         $output = static::renderFileInPhp(
             $this->templateDir.'/index.md.php',
             [
-                'index'            => $index,
-                'classDefinitions' => $this->classDefinitions,
+                'index'       => $index,
+                // 'definitions' => $this->classDefinitions,
             ]
         );
 
         file_put_contents($this->outputDir . '/' . $this->apiIndexFile, $index);
-    }
-
-    /**
-     * Creates an index of classes and namespaces.
-     *
-     * I'm generating the actual markdown output here, which isn't great...But it will have to do.
-     * If I don't want to make things too complicated.
-     *
-     * @return array
-     */
-    protected function createIndex()
-    {
-        $tree = [];
-
-        foreach ($this->classDefinitions as $className => $classInfo) {
-            $current = & $tree;
-
-            foreach (explode('\\', $className) as $part) {
-                if (!isset($current[$part])) {
-                    $current[$part] = [];
-                }
-
-                $current = & $current[$part];
-            }
-        }
-
-        /**
-         * This will be a reference to the $treeOutput closure, so that it can be invoked
-         * recursively. A string is used to trick static analysers into thinking this might be
-         * callable.
-         */
-        $treeOutput = '';
-
-        $treeOutput = function($item, $fullString = '', $depth = 0) use (&$treeOutput) {
-            $output = '';
-
-            foreach ($item as $name => $subItems) {
-                $fullName = $name;
-
-                if ($fullString) {
-                    $fullName = $fullString . '\\' . $name;
-                }
-
-                $output .= str_repeat(' ', $depth * 4) . '* ' . Generator::classLink($fullName, $name) . "\n";
-                $output .= $treeOutput($subItems, $fullName, $depth + 1);
-            }
-
-            return $output;
-        };
-
-        return $treeOutput($tree);
     }
 
     /**
