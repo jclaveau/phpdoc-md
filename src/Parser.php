@@ -76,34 +76,29 @@ class Parser
             $errors = $file->parse_markers;
             
             foreach ($file->xpath('class|interface|trait') as $xmlClass) {
-                $className = (string)$xmlClass->full_name;
-                $className = ltrim($className, '\\');
-
-                $docFileName = str_replace('\\', '-', $className) . '.md';
+                $className = (string) $xmlClass->full_name;
 
                 $implements = [];
-
                 if (isset($xmlClass->implements)) {
                     foreach ($xmlClass->implements as $interface) {
-                        $implements[] = ltrim((string)$interface, '\\');
+                        $implements[] = (string) $interface;
                     }
                 }
 
                 $extends = [];
-
                 if (isset($xmlClass->extends)) {
                     foreach ($xmlClass->extends as $parent) {
-                        $extends[] = ltrim((string)$parent, '\\');
+                        $extends[] = (string) $parent;
                     }
                 }
 
                 $class = [
                     'path'            => $this->sourceDir.'/'.$path,
                     'package'         => $package,
-                    'docFile'         => $docFileName,
+                    'docFile'         => str_replace('\\', '-', ltrim($className, '\\')) . '.md',
                     'className'       => $className,
                     'shortClass'      => (string)$xmlClass->name,
-                    'namespace'       => (string)$xmlClass['namespace'],
+                    'namespace'       => '\\'.$xmlClass['namespace'],
                     'description'     => (string)$xmlClass->docblock->description,
                     'longDescription' => (string)$xmlClass->docblock->{'long-description'},
                     'implements'      => $implements,
@@ -139,7 +134,6 @@ class Parser
     protected function parseMethods(SimpleXMLElement $xmlClass, array $class)
     {
         $className = (string)$xmlClass->full_name;
-        $className = ltrim($className, '\\');
         
         $methods = [];
         foreach ($xmlClass->method as $method) {

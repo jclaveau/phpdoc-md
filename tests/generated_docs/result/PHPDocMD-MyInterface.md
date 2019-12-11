@@ -1,5 +1,5 @@
 
-# PHPDocMD \ MyInterface
+# \PHPDocMD \ MyInterface
 
 
 <!-- Mardown tables do not handle tables without column names -->
@@ -7,7 +7,7 @@
     <tbody>
         <tr>
             <th>Namespace</th>
-            <td>PHPDocMD</td>
+            <td>\PHPDocMD</td>
         </tr>
                     </tbody>
 </table>
@@ -15,4 +15,4 @@
 
 
 ## Methods
-#### - <a href='../../mockups/MyInterface.php#L6'><code style="background-color: white; color: inherit;">mixed MyInterface::methodOfMyInterface()</code></a>
+#### - <a href='../../mockups/MyInterface.php#L6'>mixed MyInterface::methodOfMyInterface()</a>

@@ -1,5 +1,5 @@
 
-# asbtract PHPDocMD \ MyParentClass
+# asbtract \PHPDocMD \ MyParentClass
 
 
 <!-- Mardown tables do not handle tables without column names -->
@@ -7,7 +7,7 @@
     <tbody>
         <tr>
             <th>Namespace</th>
-            <td>PHPDocMD</td>
+            <td>\PHPDocMD</td>
         </tr>
                     <tr>
                 <th>Extends</th>
@@ -19,8 +19,8 @@
 
 
 ## Methods
-#### - <a href='../../mockups/MyAbstractParentClass.php#L8'><code style="background-color: white; color: inherit;">mixed MyParentClass::getter()</code></a>
-#### - <a href='../../mockups/MyAbstractParentClass.php#L13'><code style="background-color: white; color: inherit;">mixed MyParentClass::setter($value)</code></a>
+#### - <a href='../../mockups/MyAbstractParentClass.php#L8'>mixed MyParentClass::getter()</a>
+#### - <a href='../../mockups/MyAbstractParentClass.php#L13'>mixed MyParentClass::setter($value)</a>
 <blockquote><pre>Parameters:<br> &#x25FE; mixed $value</pre></blockquote>
 
 

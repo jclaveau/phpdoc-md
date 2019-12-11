@@ -62,7 +62,8 @@ abstract class Definition
     {
         $parts = explode('\\', $this->isDefinedBy);
         array_pop($parts);
-        return implode('\\', $parts);
+        $parts = array_filter($parts);
+        return '\\'.implode('\\', $parts);
     }
     
     /**

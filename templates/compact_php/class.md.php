@@ -91,9 +91,7 @@ if ($methods) {
             : '';
         
         foreach ($methods as $method) {
-            // echo '#### <code>'.$method['signature'].'</code>'
-            echo '#### - '.HTML::link($method->generateCodeUrl(), "<code style=\"background-color: white; color: inherit;\">{$method->generateSignature()}</code>")
-                // ."{#".MD::anchorId($method['signature'])."}"
+            echo '#### - '.HTML::link($method->generateCodeUrl(), $method->generateSignature())
                 .($method->isDeprecated() ? ' /!\ Deprecated /!\ ' : '')
                 ."\n";
             

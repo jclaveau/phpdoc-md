@@ -106,14 +106,19 @@ class Method extends Definition
      */
     public function generateSignature(array $options=null)
     {
-        $definer = ! is_array($options) || ! in_array('absolute', $options)
-            ? Helpers::getRelativeNamespace($this->isDefinedBy(), $this->getNamespace())
-            : $this->isDefinedBy();
+        if ( ! is_array($options) || ! in_array('absolute', $options)) {
+            $definer = Helpers::getRelativeNamespace($this->isDefinedBy(), $this->getNamespace());
+            $returnType = Helpers::getRelativeNamespace($this->returnType, $this->getNamespace());
+            
+        } else {
+            $definer = $this->isDefinedBy();
+            $returnType = $this->returnType;
+        }
         
         $signature = '';
         
-        if ($this->returnType) {
-            $signature .= $this->returnType.' ';
+        if ($returnType) {
+            $signature .= $returnType.' ';
         }
         
         $signature .= $definer.'::'.$this->name

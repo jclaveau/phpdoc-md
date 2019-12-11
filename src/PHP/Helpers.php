@@ -39,8 +39,6 @@ class Helpers
         
         $returnedClasses = [];
 
-        $className = trim($className, '\\ ');
-
         if ( ! isset($classDefinitions[$className])) {
             return null;
         } else {
@@ -74,15 +72,14 @@ class Helpers
     
     static function getRelativeNamespace($namespace, $referenceNamespace)
     {
-        if (strpos($namespace, 0, 1) == '\\') {
-            return $namespace; // already relative
-        }
-        
         $relativeNamespace = preg_replace(
             $rgxp = "#^".preg_quote($referenceNamespace.'\\', '#')."#", 
             '',
             $namespace
         );
+        
+        // var_dump(get_defined_vars());
+        // exit;
         
         return $relativeNamespace;
     }
@@ -95,7 +92,7 @@ class Helpers
         preg_match('#^([^:]+\\\\)?([^:]+)(::([^\(]+))?#', $definitionPath, $matches);
         // var_dump($matches);
         return [
-            'namespace' => $matches[1],
+            'namespace' => rtrim($matches[1], '\\'),
             'definer'   => $matches[2],
             'name'      => isset($matches[4]) ? $matches[4] : '',
         ];
