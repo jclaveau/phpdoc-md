@@ -13,6 +13,8 @@
 </table>
 
 
+## Properties
+    mixed protected MyTrait->$protectedPropertyOfMyTrait
 
 ## Methods
 #### - <a href='../../mockups/MyTrait.php#L8'>public MyTrait::getterOfMyTrait()</a>

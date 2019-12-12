@@ -214,46 +214,43 @@ class Parser
      * You must pass an xml element that refers to either the class or interface element from
      * structure.xml.
      *
-     * @param SimpleXMLElement $class
+     * @param SimpleXMLElement $xmlClass
+     * @param array $class
      *
      * @return array
      */
-    protected function parseProperties(SimpleXMLElement $class)
+    protected function parseProperties(SimpleXMLElement $xmlClass, array $class)
     {
         $properties = [];
 
-        $className = (string)$class->full_name;
-        $className = ltrim($className, '\\');
+        $className = (string) $xmlClass->full_name;
 
-        foreach ($class->property as $xProperty) {
+        foreach ($xmlClass->property as $xmlProperty) {
             $type = 'mixed';
-            $propName = (string)$xProperty->name;
-            $default = (string)$xProperty->default;
+            $propName = (string) $xmlProperty->name;
+            $default = (string) $xmlProperty->default;
 
-            $xVar = $xProperty->xpath('docblock/tag[@name="var"]');
-
-            if (count($xVar)) {
-                $type = $xVar[0]->type;
+            $xmlVar = $xmlProperty->xpath('docblock/tag[@name="var"]');
+            if (count($xmlVar)) {
+                $type = $xmlVar[0]->type;
+                var_dump($xmlVar);
+                exit;
             }
+            
 
-            $visibility = (string)$xProperty['visibility'];
-            $signature = sprintf('%s %s %s', $visibility, $type, $propName);
-
-            if ($default) {
-                $signature .= ' = ' . $default;
-            }
-
-            $properties[$propName] = [
-                'name'        => $propName,
-                'type'        => $type,
-                'default'     => $default,
-                'description' => (string)$xProperty->docblock->description . "\n\n" . (string)$xProperty->docblock->{'long-description'},
-                'visibility'  => $visibility,
-                'static'      => ((string)$xProperty['static']) == 'true',
-                'signature'   => $signature,
-                'deprecated'  => count($class->xpath('docblock/tag[@name="deprecated"]')) > 0,
-                'definedBy'   => $className,
-            ];
+            $property = (new PHP\Property)
+                ->setName($propName)
+                ->setType($type)
+                // ->setDescription($xmlProperty->xpath('docblock/tag[@name="var"]'))
+                ->setVisibility((string) $xmlProperty['visibility'])
+                ->isStatic( ((string) $xmlProperty['static']) == "true")
+                ->isDeprecated( count($xmlClass->xpath('docblock/tag[@name="deprecated"]')) > 0)
+                ->isDefinedBy($className)
+                ->setFile($class['path'])
+                ->setLine((string) $xmlProperty['line'])
+                ;
+            
+            $properties[$propName] = $property;
         }
 
         return $properties;
@@ -351,7 +348,7 @@ class Parser
             }
 
             foreach ($this->classDefinitions[$extends]['properties'] as $propertyName => $propertyInfo) {
-                if ($propertyInfo['visibility'] === 'private') {
+                if ($propertyInfo->getVisibility() === 'private') {
                     continue;
                 }
 

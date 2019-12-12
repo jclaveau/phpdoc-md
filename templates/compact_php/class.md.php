@@ -61,18 +61,18 @@ if ($constants) {
 ?>
 
 <?php 
-/** /
+/**/
 if ($properties) {
     echo "## Properties\n";
 
-    foreach (Generator::indexByDefiner($properties) as $definer => $properties) {
+    foreach (PHP::indexByDefiner($properties) as $definer => $properties) {
         echo $definer != $className 
             ? "\n    Defined by: ".Generator::classDocLink($definer)."\n" 
             : '';
         
         foreach ($properties as $property) {
-            echo '    '.$property['signature']."\n";
-            echo (trim($property['description']) ? $property['description']."\n" : '');
+            echo '    '.$property->generateSignature()."\n";
+            // echo (trim($property['description']) ? $property['description']."\n" : '');
         }
     }
 }

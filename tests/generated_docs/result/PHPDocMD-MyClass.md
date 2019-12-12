@@ -21,6 +21,12 @@
 </table>
 
 
+## Properties
+    mixed protected MyClass->$protectedProperty
+    mixed private MyClass->$privateProperty
+    mixed public MyClass->$publicProperty
+    mixed protected MyClass->$protectedPropertyOfMyTrait
+    mixed protected MyClass::$$myStaticProperty
 
 ## Methods
 #### - <a href='../../mockups/MyClass.php#L12'>public MyClass::__construct()</a>

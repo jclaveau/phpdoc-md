@@ -17,6 +17,8 @@
 </table>
 
 
+## Properties
+    mixed protected MyParentClass::$$myStaticProperty
 
 ## Methods
 #### - <a href='../../mockups/MyAbstractParentClass.php#L8'>public static MyParentClass::getStaticProperty()</a>
