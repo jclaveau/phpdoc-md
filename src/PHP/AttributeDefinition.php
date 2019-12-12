@@ -7,7 +7,7 @@ namespace PHPDocMD\PHP;
 abstract class AttributeDefinition extends Definition
 {
     protected $isDefinedBy;
-    protected $visibility;
+    protected $visibility = 'public';
     protected $isStatic;
     
     /**

@@ -5,6 +5,13 @@ class MyClass extends MyParentClass implements MyInterface, MySecondInterface
 {
     use MyTrait;
 
+    const constant_without_description = 'not descripted';
+    
+    /**
+     * @var string The description of my constant
+     */
+    const constant_with_description = 'I MUST have a description';
+    
     /**
      * @var string A protected property of MyClass
      */

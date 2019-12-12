@@ -59,17 +59,35 @@ use PHPDocMD\PHP\Helpers as PHP;
 </table>
 
 <?php
+
+/**/
 if ($constants) {
     echo "## Constants\n";
 
     foreach (PHP::indexByDefiner($constants) as $definer => $constants) {
-        echo $definer != $className ? "    Defined by: $definer\n\n" : '';
+        echo $definer != $className 
+            ? "\n### Defined by: ".HTML::classDocLink($definer)."\n" 
+            : '';
         
         foreach ($constants as $constant) {
-            echo '    '.$constant['signature']."\n";
+            echo '#### - '.HTML::link($constant->generateCodeUrl(), $constant->generateSignature())
+                .($constant->isDeprecated() ? ' /!\ Deprecated /!\ ' : '')
+                ."\n";
+                
+            $fullDescription = [];
+            if ($constant->getDescription()) {
+                $fullDescription[] = $constant->getDescription();
+            }
+                        
+            if ($fullDescription) {
+                echo "<blockquote><pre>".implode("<br><br>", $fullDescription)."</pre></blockquote>\n\n\n";
+            }
         }
     }
 }
+/**/
+
+
 ?>
 
 <?php 

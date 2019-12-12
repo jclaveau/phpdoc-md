@@ -275,27 +275,45 @@ class Parser
      *
      * @return array
      */
-    protected function parseConstants(SimpleXMLElement $class)
+    protected function parseConstants(SimpleXMLElement $xmlClass, array $class)
     {
         $constants = [];
 
-        $className = (string)$class->full_name;
-        $className = ltrim($className, '\\');
+        $className = (string) $xmlClass->full_name;
 
-        foreach ($class->constant as $xConstant) {
-            $name = (string)$xConstant->name;
-            $value = (string)$xConstant->value;
+        foreach ($xmlClass->constant as $xmlConstant) {
+            $name = (string) $xmlConstant->name;
 
-            $signature = sprintf('const %s = %s', $name, $value);
+            $xmlVars = $xmlConstant->xpath('docblock/tag[@name="var"]');
+            $description = '';
+            if (count($xmlVars)) {
+                foreach ($xmlVars as $xmlVar) {
+                    $variable = (string) $xmlVar[0]['variable'];
+                    if ($variable != '' && $variable != $propName) {
+                        continue;
+                    }
+                    $description = preg_replace(
+                        '#(^'.preg_quote('<p>').')|('.preg_quote('</p>').'$)#', 
+                        '',
+                        (string) $xmlVar[0]['description']
+                    );
+                }
+            }
 
-            $constants[$name] = [
-                'name'        => $name,
-                'description' => (string)$xConstant->docblock->description . "\n\n" . (string)$xConstant->docblock->{'long-description'},
-                'signature'   => $signature,
-                'value'       => $value,
-                'deprecated'  => count($class->xpath('docblock/tag[@name="deprecated"]')) > 0,
-                'definedBy'   => $className,
-            ];
+            $constant = (new PHP\Constant)
+                ->setName($name)
+                ->setValue((string) $xmlConstant->value)
+                ->setDescription($description)
+                ->setVisibility((string) $xmlConstant['visibility'])
+                ->isDeprecated( count($xmlClass->xpath('docblock/tag[@name="deprecated"]')) > 0)
+                ->isDefinedBy($className)
+                ->setFile($class['path'])
+                ->setLine((string) $xmlConstant['line'])
+                ;
+            
+            $constants[ $name ] = $constant;
+            // var_dump($xmlClass->constant);
+            // exit;
         }
 
         return $constants;
