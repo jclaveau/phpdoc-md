@@ -1,5 +1,5 @@
 
-# asbtract \PHPDocMD \ MyParentClass
+# \PHPDocMD \ MyParentClass
 
 
 <!-- Mardown tables do not handle tables without column names -->
@@ -9,20 +9,22 @@
             <th>Namespace</th>
             <td>\PHPDocMD</td>
         </tr>
-                    <tr>
+                                <tr>
                 <th>Extends</th>
-                <td></td>
+                <td><a href='PHPDocMD-MyGrandParentClass.md' >\PHPDocMD\MyGrandParentClass</a></td>
             </tr>
                     </tbody>
 </table>
 
 
 ## Properties
-#### - <a href='../../mockups/MyAbstractParentClass.php#L6'>protected  MyParentClass::$myStaticProperty</a>
+#### - <a href='../../mockups/MyParentClass.php#L6'>protected  MyParentClass::$myStaticProperty</a>
 
 ## Methods
-#### - <a href='../../mockups/MyAbstractParentClass.php#L8'>public static MyParentClass::getStaticProperty()</a>
-#### - <a href='../../mockups/MyAbstractParentClass.php#L13'>final public static MyParentClass::setStaticProperty()</a>
+#### - <a href='../../mockups/MyParentClass.php#L6'>final public static MyParentClass::setStaticProperty()</a>
 <blockquote><pre>Parameters:<br> &#x25FE; mixed $value</pre></blockquote>
 
 
+
+### Defined by: <a href='PHPDocMD-MyGrandParentClass.md' >\PHPDocMD\MyGrandParentClass</a>
+#### - <a href='../../mockups/MyGrandParentClass.php#L8'>public static MyGrandParentClass::getStaticProperty()</a>

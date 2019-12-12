@@ -9,9 +9,9 @@
             <th>Namespace</th>
             <td>\PHPDocMD</td>
         </tr>
-                    <tr>
+                                <tr>
                 <th>Extends</th>
-                <td><a href='PHPDocMD-MyParentClass.md' >\PHPDocMD\MyParentClass</a></td>
+                <td><a href='PHPDocMD-MyParentClass.md' >\PHPDocMD\MyParentClass</a>,<br><a href='PHPDocMD-MyGrandParentClass.md' >\PHPDocMD\MyGrandParentClass</a></td>
             </tr>
                             <tr>
                 <th>Implements</th>
@@ -22,15 +22,18 @@
 
 
 ## Properties
-#### - <a href='../../mockups/MyClass.php#L11'>protected  MyClass->protectedProperty</a>
+#### - <a href='../../mockups/MyClass.php#L11'>protected string MyClass->protectedProperty</a>
+<blockquote><pre>A protected property of MyClass</pre></blockquote>
+
+
 #### - <a href='../../mockups/MyClass.php#L12'>private  MyClass->privateProperty</a>
 #### - <a href='../../mockups/MyClass.php#L13'>public  MyClass->publicProperty</a>
 #### - <a href='../../mockups/MyClass.php#L10'>protected string MyClass->protectedPropertyOfMyTrait</a>
-<blockquote><pre><p>A protected property of MyTrait</p></pre></blockquote>
+<blockquote><pre>A protected property of MyTrait</pre></blockquote>
 
 
 #### - <a href='../../mockups/MyClass.php#L10'>protected string MyClass->protectedPropertyOfMyTrait2</a>
-<blockquote><pre><p>Second protected property of MyTrait</p></pre></blockquote>
+<blockquote><pre>Second protected property of MyTrait</pre></blockquote>
 
 
 #### - <a href='../../mockups/MyClass.php#L6'>protected  MyClass::$myStaticProperty</a>
@@ -52,11 +55,13 @@
 
 
 ### Defined by: <a href='PHPDocMD-MyParentClass.md' >\PHPDocMD\MyParentClass</a>
-#### - <a href='../../mockups/MyAbstractParentClass.php#L8'>public static MyParentClass::getStaticProperty()</a>
-#### - <a href='../../mockups/MyAbstractParentClass.php#L13'>final public static MyParentClass::setStaticProperty()</a>
+#### - <a href='../../mockups/MyParentClass.php#L6'>final public static MyParentClass::setStaticProperty()</a>
 <blockquote><pre>Parameters:<br> &#x25FE; mixed $value</pre></blockquote>
 
 
+
+### Defined by: <a href='PHPDocMD-MyGrandParentClass.md' >\PHPDocMD\MyGrandParentClass</a>
+#### - <a href='../../mockups/MyGrandParentClass.php#L8'>public static MyGrandParentClass::getStaticProperty()</a>
 
 ### Defined by: <a href='PHPDocMD-MyInterface.md' >\PHPDocMD\MyInterface</a>
 #### - <a href='../../mockups/MyInterface.php#L6'>public MyInterface::methodOfMyInterface()</a>

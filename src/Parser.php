@@ -234,7 +234,8 @@ class Parser
             $description = '';
             if (count($xmlVars)) {
                 foreach ($xmlVars as $xmlVar) {
-                    if (((string) $xmlVar[0]['variable']) != $propName) {
+                    $variable = (string) $xmlVar[0]['variable'];
+                    if ($variable != '' && $variable != $propName) {
                         continue;
                     }
                     $types = (string) $xmlVar[0]->type;
@@ -244,7 +245,7 @@ class Parser
                         (string) $xmlVar[0]['description']
                     );
                 }
-            }            
+            }
 
             $property = (new PHP\Property)
                 ->setName($propName)

@@ -1,9 +1,8 @@
 * PHPDocMD
-    * <a href='PHPDocMD-MyParentClass.md' >MyParentClass</a>
+    * <a href='PHPDocMD-MySecondInterface.md' >MySecondInterface</a>
         * Constants
         * Properties
-        * getStaticProperty()
-        * setStaticProperty()
+        * methodOfMySecondInterface()
     * <a href='PHPDocMD-MyTrait.md' >MyTrait</a>
         * Constants
         * Properties
@@ -17,11 +16,15 @@
         * protectedMethod()
         * getterOfMyTrait()
         * setterOfMyTrait()
+    * <a href='PHPDocMD-MyParentClass.md' >MyParentClass</a>
+        * Constants
+        * Properties
+        * setStaticProperty()
+    * <a href='PHPDocMD-MyGrandParentClass.md' >MyGrandParentClass</a>
+        * Constants
+        * Properties
+        * getStaticProperty()
     * <a href='PHPDocMD-MyInterface.md' >MyInterface</a>
         * Constants
         * Properties
         * methodOfMyInterface()
-    * <a href='PHPDocMD-MySecondInterface.md' >MySecondInterface</a>
-        * Constants
-        * Properties
-        * methodOfMySecondInterface()

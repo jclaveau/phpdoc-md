@@ -15,11 +15,11 @@
 
 ## Properties
 #### - <a href='../../mockups/MyTrait.php#L10'>protected string MyTrait->protectedPropertyOfMyTrait</a>
-<blockquote><pre><p>A protected property of MyTrait</p></pre></blockquote>
+<blockquote><pre>A protected property of MyTrait</pre></blockquote>
 
 
 #### - <a href='../../mockups/MyTrait.php#L10'>protected string MyTrait->protectedPropertyOfMyTrait2</a>
-<blockquote><pre><p>Second protected property of MyTrait</p></pre></blockquote>
+<blockquote><pre>Second protected property of MyTrait</pre></blockquote>
 
 
 

@@ -1,7 +1,7 @@
 <?php
 namespace PHPDocMD;
 
-class MyClass extends MyParentClass implements MyInterface
+class MyClass extends MyParentClass implements MyInterface, MySecondInterface
 {
     use MyTrait;
 

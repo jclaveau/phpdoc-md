@@ -32,6 +32,18 @@ use PHPDocMD\PHP\Helpers as PHP;
             <td><?= $namespace ?></td>
         </tr>
         <?php if ($extends) { ?>
+            <?php 
+            $definitions = $GLOBALS['PHPDocMD_classDefinitions'];
+            $current_parent = $extends[0];
+            while ($current_parent) {
+                if ( ! empty($definitions[ $current_parent ]['extends'][0])) {
+                    $current_parent = $definitions[ $current_parent ]['extends'][0];
+                    $extends[] = $current_parent;
+                } else {
+                    $current_parent = null;
+                }
+            }
+            ?>
             <tr>
                 <th>Extends</th>
                 <td><?= implode(',<br>', array_map(HTML::class.'::classDocLink', $extends)) ?></td>

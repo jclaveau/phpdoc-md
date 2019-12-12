@@ -1,61 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project title="API Documentation" version="2.8.5">
   <partials/>
-  <file path="MyAbstractParentClass.php" generated-path="MyAbstractParentClass.html" hash="01993425dd07a629fa26a51742fd8909" package="Default">
+  <file path="MySecondInterface.php" generated-path="MySecondInterface.html" hash="73913ce9a9020cee158393fcd9a4fe26" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
       <tag name="package" line="0" description="Default"/>
     </docblock>
-    <class final="false" abstract="true" namespace="PHPDocMD" line="4" package="Default">
-      <extends/>
-      <name>MyParentClass</name>
-      <full_name>\PHPDocMD\MyParentClass</full_name>
+    <interface namespace="PHPDocMD" line="4" package="Default">
+      <name>MySecondInterface</name>
+      <full_name>\PHPDocMD\MySecondInterface</full_name>
       <docblock line="4">
         <description></description>
         <long-description></long-description>
         <tag name="package" line="4" description="Default"/>
       </docblock>
-      <property static="true" visibility="protected" namespace="PHPDocMD" line="6" package="Default">
-        <name>$myStaticProperty</name>
-        <full_name>\PHPDocMD\MyParentClass::myStaticProperty</full_name>
-        <default></default>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="6" package="Default">
+        <name>methodOfMySecondInterface</name>
+        <full_name>\PHPDocMD\MySecondInterface::methodOfMySecondInterface()</full_name>
         <docblock line="6">
           <description></description>
           <long-description></long-description>
         </docblock>
-      </property>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="8" package="Default">
-        <name>getStaticProperty</name>
-        <full_name>\PHPDocMD\MyParentClass::getStaticProperty()</full_name>
-        <docblock line="8">
-          <description></description>
-          <long-description></long-description>
-        </docblock>
       </method>
-      <method final="true" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="13" package="Default">
-        <name>setStaticProperty</name>
-        <full_name>\PHPDocMD\MyParentClass::setStaticProperty()</full_name>
-        <docblock line="13">
-          <description></description>
-          <long-description></long-description>
-        </docblock>
-        <argument line="0" by_reference="false">
-          <name>$value</name>
-          <default></default>
-          <type/>
-        </argument>
-      </method>
-    </class>
+    </interface>
     <parse_markers>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
-      <error line="4" code="PPC:ERR-50005">No summary for class \PHPDocMD\MyParentClass</error>
-      <error line="8" code="PPC:ERR-50008">No summary for method getStaticProperty()</error>
-      <error line="13" code="PPC:ERR-50015">Argument $value is missing from the Docblock of setStaticProperty</error>
-      <error line="13" code="PPC:ERR-50008">No summary for method setStaticProperty()</error>
-      <error line="6" code="PPC:ERR-50007">No summary for property $myStaticProperty</error>
+      <error line="4" code="PPC:ERR-50009">No summary for interface \PHPDocMD\MySecondInterface</error>
+      <error line="6" code="PPC:ERR-50008">No summary for method methodOfMySecondInterface()</error>
     </parse_markers>
-    <source>eJyVzc0KwjAMwPF7nyKHHfQVNsWDO3gZFHyCrGY66NrSpMKQvbv7UERkB3NK4B9+u0O4BeWwIw5oCPRJl95UZaEU1iwRjYCxyAxVrzGSk+N0qYeCcUL0QkboAiworYGs68/zpqMPFKUv5m6JU23H5FU2yRlpvYMryffLZjvnizBNJEnRAZNt8nxFGD5O0zq0axr/aNkdbaL/TNjD8vbGB/UE2+9qTA==</source>
+    <source>eJyzsS/IKODKS8xNLS5ITE5VCPAIcMlP9nWx5uLKzCtJLUoDCfpWBqcm5+eleMJEuKq5FICgoDQpJzNZIa00L7kkMz9PITe1JCM/xT8NQ72GpjVXrQIXAAqeJVc=</source>
   </file>
   <file path="MyTrait.php" generated-path="MyTrait.html" hash="0e9736ea9f647c536234d239654ed0c3" package="Default">
     <docblock line="0">
@@ -220,7 +194,7 @@
       </property>
       <property static="true" visibility="protected" namespace="PHPDocMD" line="6" package="Default">
         <name>$myStaticProperty</name>
-        <full_name>\PHPDocMD\MyParentClass::myStaticProperty</full_name>
+        <full_name>\PHPDocMD\MyGrandParentClass::myStaticProperty</full_name>
         <default></default>
         <docblock line="6">
           <description></description>
@@ -294,19 +268,10 @@
         </argument>
         <inherited_from>\PHPDocMD\MyTrait</inherited_from>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="8" package="Default">
-        <name>getStaticProperty</name>
-        <full_name>\PHPDocMD\MyParentClass::getStaticProperty()</full_name>
-        <docblock line="8">
-          <description></description>
-          <long-description></long-description>
-        </docblock>
-        <inherited_from>\PHPDocMD\MyParentClass</inherited_from>
-      </method>
-      <method final="true" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="13" package="Default">
+      <method final="true" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="6" package="Default">
         <name>setStaticProperty</name>
         <full_name>\PHPDocMD\MyParentClass::setStaticProperty()</full_name>
-        <docblock line="13">
+        <docblock line="6">
           <description></description>
           <long-description></long-description>
         </docblock>
@@ -316,6 +281,15 @@
           <type/>
         </argument>
         <inherited_from>\PHPDocMD\MyParentClass</inherited_from>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="8" package="Default">
+        <name>getStaticProperty</name>
+        <full_name>\PHPDocMD\MyGrandParentClass::getStaticProperty()</full_name>
+        <docblock line="8">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <inherited_from>\PHPDocMD\MyGrandParentClass</inherited_from>
       </method>
     </class>
     <parse_markers>
@@ -329,6 +303,103 @@
       <error line="13" code="PPC:ERR-50007">No summary for property $publicProperty</error>
     </parse_markers>
     <source>eJy1UslqwzAQvfsr5mDIQtrcm6YLDbQ9BAzJD6jyOBbYspDGoaHk36vFS+sklByqi2ZGb5b3NPePKleRZCUaxThC8pasKr5eLaKIF8wYWB9e/I2fhDJ1fsI0SgpRUaoCS+u6h3dJqDNbZWadDfJKpl0o+orAntqgfdtqJsh2cJH5dOpvmMLTnmkwpIXcwTMoXRFywtRZCjUdoMracZqUub97ZNyZSZuzhFEXHC0avNgzQmvFjdmhIeB9sEXXH4Xg4NHe/AH2aB9swENKr0hWADf4yWS3Laajr5FqLVsFtjnCnhU1uuyYcmFuHk6K/NYhTJrVkpOoJOyQkmHCeAJ3TQefE77Fnab7pU6B3/Esy801LBXTrGxJxoFhz5UqsN8rdtJZf7DuFcMi8zV4rd1ugpCGmOR4cWMGSplzSoXZZsC0ZgeIK+WgZinropgMtLs0qN2PUGVxVuYTTftN7kbrQmukvErHw9bXftv/tThC9A1Ht1gT</source>
+  </file>
+  <file path="MyParentClass.php" generated-path="MyParentClass.html" hash="6b489afca0ccd19d53992715b96515b9" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="PHPDocMD" line="4" package="Default">
+      <extends>\PHPDocMD\MyGrandParentClass</extends>
+      <name>MyParentClass</name>
+      <full_name>\PHPDocMD\MyParentClass</full_name>
+      <docblock line="4">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="4" description="Default"/>
+        <tag name="inherited_from" description="\PHPDocMD\MyGrandParentClass" refers="\PHPDocMD\MyGrandParentClass" link="/classes/PHPDocMD.MyGrandParentClass.html"/>
+      </docblock>
+      <property static="true" visibility="protected" namespace="PHPDocMD" line="6" package="Default">
+        <name>$myStaticProperty</name>
+        <full_name>\PHPDocMD\MyGrandParentClass::myStaticProperty</full_name>
+        <default></default>
+        <docblock line="6">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="true" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="6" package="Default">
+        <name>setStaticProperty</name>
+        <full_name>\PHPDocMD\MyParentClass::setStaticProperty()</full_name>
+        <docblock line="6">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="8" package="Default">
+        <name>getStaticProperty</name>
+        <full_name>\PHPDocMD\MyGrandParentClass::getStaticProperty()</full_name>
+        <docblock line="8">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <inherited_from>\PHPDocMD\MyGrandParentClass</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="4" code="PPC:ERR-50005">No summary for class \PHPDocMD\MyParentClass</error>
+      <error line="6" code="PPC:ERR-50015">Argument $value is missing from the Docblock of setStaticProperty</error>
+      <error line="6" code="PPC:ERR-50008">No summary for method setStaticProperty()</error>
+    </parse_markers>
+    <source>eJxVjMEOgkAMRO/9ih446C+AxoMkeiHZxC+oS4kkS9nsdonE8O/CctG5TDrTN6eLf3kQGjh6sozmburRNnUFYB3FiM1sKLDoNV/8VpZ2S2+BpP2p4AO4quuFHPr0dL3FqKSrdUms9qNgZH3kyITRc9D5UEzkEh8zug9sCqwpbO+uK8timP8hPOOOVRlYYIEvf1VCKA==</source>
+  </file>
+  <file path="MyGrandParentClass.php" generated-path="MyGrandParentClass.html" hash="af782994f3d3f72c6ea0e4d3cc2fcdbf" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <class final="false" abstract="true" namespace="PHPDocMD" line="4" package="Default">
+      <extends/>
+      <name>MyGrandParentClass</name>
+      <full_name>\PHPDocMD\MyGrandParentClass</full_name>
+      <docblock line="4">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="4" description="Default"/>
+      </docblock>
+      <property static="true" visibility="protected" namespace="PHPDocMD" line="6" package="Default">
+        <name>$myStaticProperty</name>
+        <full_name>\PHPDocMD\MyGrandParentClass::myStaticProperty</full_name>
+        <default></default>
+        <docblock line="6">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="PHPDocMD" line="8" package="Default">
+        <name>getStaticProperty</name>
+        <full_name>\PHPDocMD\MyGrandParentClass::getStaticProperty()</full_name>
+        <docblock line="8">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="4" code="PPC:ERR-50005">No summary for class \PHPDocMD\MyGrandParentClass</error>
+      <error line="8" code="PPC:ERR-50008">No summary for method getStaticProperty()</error>
+      <error line="6" code="PPC:ERR-50007">No summary for property $myStaticProperty</error>
+    </parse_markers>
+    <source>eJx1zbEOgkAMBuC9T9HBQV8BTBwk0YXkEp+glKIkcHfplYEY3l04XBz8p6b5/vznS3xF8DRKisSC7u6qwHVVAlCTTIkNeaCUsJ5vSr51pOLtur3gDbgmajBhkxaTkfWMh3F+5MtpiKI2l9nteGqGlXxlN3m2Pnh8iv1WjqfM94UtKjapxyRDVxR/FhZY4APnS0S+</source>
   </file>
   <file path="MyInterface.php" generated-path="MyInterface.html" hash="f763db08f89a96fd7a155a1fbfa97aeb" package="Default">
     <docblock line="0">
@@ -359,36 +430,6 @@
       <error line="6" code="PPC:ERR-50008">No summary for method methodOfMyInterface()</error>
     </parse_markers>
     <source>eJyzsS/IKODKS8xNLS5ITE5VCPAIcMlP9nWx5uLKzCtJLUoDCfpWesLYXNVcCkBQUJqUk5mskFaal1ySmZ+nkJtakpGf4p+GpFJD05qrVoELAEhyIJ8=</source>
-  </file>
-  <file path="MySecondInterface.php" generated-path="MySecondInterface.html" hash="73913ce9a9020cee158393fcd9a4fe26" package="Default">
-    <docblock line="0">
-      <description></description>
-      <long-description></long-description>
-      <tag name="package" line="0" description="Default"/>
-    </docblock>
-    <interface namespace="PHPDocMD" line="4" package="Default">
-      <name>MySecondInterface</name>
-      <full_name>\PHPDocMD\MySecondInterface</full_name>
-      <docblock line="4">
-        <description></description>
-        <long-description></long-description>
-        <tag name="package" line="4" description="Default"/>
-      </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="6" package="Default">
-        <name>methodOfMySecondInterface</name>
-        <full_name>\PHPDocMD\MySecondInterface::methodOfMySecondInterface()</full_name>
-        <docblock line="6">
-          <description></description>
-          <long-description></long-description>
-        </docblock>
-      </method>
-    </interface>
-    <parse_markers>
-      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
-      <error line="4" code="PPC:ERR-50009">No summary for interface \PHPDocMD\MySecondInterface</error>
-      <error line="6" code="PPC:ERR-50008">No summary for method methodOfMySecondInterface()</error>
-    </parse_markers>
-    <source>eJyzsS/IKODKS8xNLS5ITE5VCPAIcMlP9nWx5uLKzCtJLUoDCfpWBqcm5+eleMJEuKq5FICgoDQpJzNZIa00L7kkMz9PITe1JCM/xT8NQ72GpjVXrQIXAAqeJVc=</source>
   </file>
   <package name="Default" full_name="Default"/>
   <package name="global" full_name="global"/>
