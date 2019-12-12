@@ -7,7 +7,7 @@ namespace PHPDocMD\PHP;
 abstract class Definition
 {
     protected $namespace;
-    protected $name;
+    private   $name;
     protected $description;
     protected $isDeprecated;
     protected $file;
@@ -125,6 +125,13 @@ abstract class Definition
     {
         // /blob/master/src/DeferredCallChain.php#L9
         return $this->file.'#L'.$this->line;
+    }
+
+    /**
+     */
+    public function getPath()
+    {
+        return $this->namespace.'\\'.$this->name;
     }
 
     /**/

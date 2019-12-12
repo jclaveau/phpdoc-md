@@ -13,11 +13,17 @@ use PHPDocMD\PHP\Helpers as PHP;
  * details caption figure figcaption
  * abbr bdo cite dfn mark small span time wbr
  */
+if ( ! isset($level)) {
+    $level = 0;
+}
 ?>
 
-# <?= ($deprecated ? '/!\ Deprecated /!\ ': '') 
-    . ($abstract ? 'asbtract ' : '') 
-    . $namespace . ' \ ' . $shortClass 
+<?= HTML::heading(
+    $level + 1, 
+    ($deprecated ? '/!\ Deprecated /!\ ': '') 
+        . ($abstract ? 'asbtract ' : '') 
+        . $namespace . ' \ ' . $shortClass 
+)
 ?>
 
 <?= $description ?>
@@ -62,17 +68,20 @@ use PHPDocMD\PHP\Helpers as PHP;
 
 /**/
 if ($constants) {
-    echo "## Constants\n";
+    echo HTML::heading($level + 2, "Constants");
 
     foreach (PHP::indexByDefiner($constants) as $definer => $constants) {
         echo $definer != $className 
-            ? "\n### Defined by: ".HTML::classDocLink($definer)."\n" 
+            ? HTML::heading($level + 3, "Defined by: ".HTML::classDocLink($definer))
             : '';
-        
+
         foreach ($constants as $constant) {
-            echo '#### - '.HTML::link($constant->generateCodeUrl(), $constant->generateSignature())
-                .($constant->isDeprecated() ? ' /!\ Deprecated /!\ ' : '')
-                ."\n";
+            echo HTML::heading(
+                $level + 4, 
+                HTML::link($constant->generateCodeUrl(), $constant->generateSignature())
+                .($constant->isDeprecated() ? ' /!\ Deprecated /!\ ' : ''),
+                ['id' => MD::anchorId($constant->getPath())]
+            );
                 
             $fullDescription = [];
             if ($constant->getDescription()) {
@@ -85,25 +94,23 @@ if ($constants) {
         }
     }
 }
-/**/
 
-
-?>
-
-<?php 
 /**/
 if ($properties) {
-    echo "## Properties\n";
+    echo HTML::heading($level + 2, "Properties");
 
     foreach (PHP::indexByDefiner($properties) as $definer => $properties) {
         echo $definer != $className 
-            ? "\n### Defined by: ".HTML::classDocLink($definer)."\n" 
+            ? HTML::heading($level + 3, "Defined by: ".HTML::classDocLink($definer))
             : '';
         
         foreach ($properties as $property) {
-            echo '#### - '.HTML::link($property->generateCodeUrl(), $property->generateSignature())
-                .($property->isDeprecated() ? ' /!\ Deprecated /!\ ' : '')
-                ."\n";
+            echo HTML::heading(
+                $level + 4, 
+                HTML::link($property->generateCodeUrl(), $property->generateSignature())
+                .($property->isDeprecated() ? ' /!\ Deprecated /!\ ' : ''),
+                ['id' => MD::anchorId($property->getPath())]
+            );
                 
             $fullDescription = [];
             if ($property->getDescription()) {
@@ -123,22 +130,21 @@ if ($properties) {
 }
 /**/
 
-?>
-
-<?php 
-
 if ($methods) {
-    echo "## Methods\n";
+    echo HTML::heading($level + 2, "Methods");
 
     foreach (PHP::indexByDefiner($methods) as $definer => $methods) {
         echo $definer != $className 
-            ? "\n### Defined by: ".HTML::classDocLink($definer)."\n" 
+            ? HTML::heading($level + 3, "Defined by: ".HTML::classDocLink($definer))
             : '';
         
         foreach ($methods as $method) {
-            echo '#### - '.HTML::link($method->generateCodeUrl(), $method->generateSignature())
-                .($method->isDeprecated() ? ' /!\ Deprecated /!\ ' : '')
-                ."\n";
+            echo HTML::heading(
+                $level + 4, 
+                HTML::link($method->generateCodeUrl(), $method->generateSignature())
+                .($method->isDeprecated() ? ' /!\ Deprecated /!\ ' : ''),
+                ['id' => MD::anchorId($method->getPath())]
+            );
             
             $fullDescription = [];
             

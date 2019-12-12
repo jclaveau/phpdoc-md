@@ -1,5 +1,5 @@
 
-# asbtract \PHPDocMD \ MyGrandParentClass
+<h1 >asbtract \PHPDocMD \ MyGrandParentClass</h1>
 
 
 <!-- Mardown tables do not handle tables without column names -->
@@ -16,9 +16,4 @@
                     </tbody>
 </table>
 
-
-## Properties
-#### - <a href='../../mockups/MyGrandParentClass.php#L6'>protected  MyGrandParentClass::$myStaticProperty</a>
-
-## Methods
-#### - <a href='../../mockups/MyGrandParentClass.php#L8'>public static MyGrandParentClass::getStaticProperty()</a>
+<h2 >Properties</h2><h4 id="phpdocmdmygrandparentclass"><a href='../../mockups/MyGrandParentClass.php#L6' >protected  MyGrandParentClass::$myStaticProperty</a></h4><h2 >Methods</h2><h4 id="phpdocmdmygrandparentclassgetstaticproperty"><a href='../../mockups/MyGrandParentClass.php#L8' >public static MyGrandParentClass::getStaticProperty()</a></h4>

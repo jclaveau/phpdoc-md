@@ -1,5 +1,5 @@
 
-# \PHPDocMD \ MySecondInterface
+<h1 >\PHPDocMD \ MySecondInterface</h1>
 
 
 <!-- Mardown tables do not handle tables without column names -->
@@ -12,7 +12,4 @@
                     </tbody>
 </table>
 
-
-
-## Methods
-#### - <a href='../../mockups/MySecondInterface.php#L6'>public MySecondInterface::methodOfMySecondInterface()</a>
+<h2 >Methods</h2><h4 id="phpdocmdmysecondinterfacemethodofmysecondinterface"><a href='../../mockups/MySecondInterface.php#L6' >public MySecondInterface::methodOfMySecondInterface()</a></h4>

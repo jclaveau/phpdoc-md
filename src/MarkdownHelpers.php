@@ -52,7 +52,7 @@ class MarkdownHelpers
             
             foreach ($info['methods'] as $method) {
                 if ($definerName == $method->isDefinedBy()) {
-                    $current[ $method->getName().'()' ] = [];
+                    $current[ $method->getName().'()' ] = '::';
                 }
             }
         }
@@ -71,17 +71,32 @@ class MarkdownHelpers
                 $fullName = $name;
 
                 if ($fullString) {
-                    $fullName = $fullString . '\\' . $name;
+                    $fullName = $fullString . ($subItems == '::' ? '::' : '\\') . $name;
                 }
-
-                $output .= str_repeat(' ', $depth * 4) . '* ' . HTML::classDocLink('\\'.$fullName, $name) . "\n";
-                $output .= $treeOutput($subItems, $fullName, $depth + 1);
+                
+                if ($name == 'Properties') {
+                    
+                }
+                elseif ($name == 'Constants') {
+                    
+                }
+                else {
+                    $output .= str_repeat(' ', $depth * 4) . '* ' . HTML::docLink('\\'.$fullName, $name) . "\n";
+                    if (is_array($subItems)) {
+                        $output .= $treeOutput($subItems, $fullName, $depth + 1);
+                    }
+                }
             }
 
             return $output;
         };
         
-        return $treeOutput($tree);
+        $out = $treeOutput($tree);
+        
+        
+        // var_dump($out);
+        // exit;
+        return $out;
     }
 
     /**/

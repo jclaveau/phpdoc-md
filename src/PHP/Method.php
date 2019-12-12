@@ -103,7 +103,7 @@ class Method extends AttributeDefinition
             $signature .= 'static ';
         }
         
-        $signature .= $definer.'::'.$this->name
+        $signature .= $definer.'::'.$this->getName()
             .'('
             .( ( ! is_array($options) || in_array('no_arguments', $options))
                 ? ''
@@ -113,6 +113,13 @@ class Method extends AttributeDefinition
             ;
         
         return $signature;
+    }
+
+    /**
+     */
+    public function getTypedName()
+    {
+        return $this->getName() . '()';
     }
 
     /**

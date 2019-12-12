@@ -6,6 +6,14 @@ class Property extends AttributeDefinition
     protected $types = ['mixed'];
     protected $defaultValue;
 
+    /**
+     */
+    public function setName($name)
+    {
+        $this->name = ltrim($name, '$');
+        return $this;
+    }
+    
     public function setTypes($types)
     {
         if (is_string($types)) {
@@ -55,6 +63,13 @@ class Property extends AttributeDefinition
                    ;
         
         return $signature;
+    }
+
+    /**
+     */
+    public function getTypedName()
+    {
+        return '$'.$this->getName();
     }
 
     /**/

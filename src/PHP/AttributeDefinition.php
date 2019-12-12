@@ -15,7 +15,7 @@ abstract class AttributeDefinition extends Definition
     public function isDefinedBy($value=null)
     {
         if ($value !== null) {
-            $this->namespace = Helpers::definitionParts($value)['namespace'];
+            $this->namespace = Helpers::definitionPathParts($value)['namespace'];
             $this->isDefinedBy = $value; 
             return $this;
         } else {
@@ -49,6 +49,20 @@ abstract class AttributeDefinition extends Definition
             return $this->isStatic;
         }
     }
+    
+    /**
+     */
+    final public function getPath()
+    {
+        return $this->isDefinedBy()
+            . '::'
+            . $this->getTypedName()
+            ;
+    }
+
+    /**
+     */
+    abstract public function getTypedName();
     
     /**/
 } 
