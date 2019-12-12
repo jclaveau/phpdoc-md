@@ -57,7 +57,7 @@
     </parse_markers>
     <source>eJyVzc0KwjAMwPF7nyKHHfQVNsWDO3gZFHyCrGY66NrSpMKQvbv7UERkB3NK4B9+u0O4BeWwIw5oCPRJl95UZaEU1iwRjYCxyAxVrzGSk+N0qYeCcUL0QkboAiworYGs68/zpqMPFKUv5m6JU23H5FU2yRlpvYMryffLZjvnizBNJEnRAZNt8nxFGD5O0zq0axr/aNkdbaL/TNjD8vbGB/UE2+9qTA==</source>
   </file>
-  <file path="MyTrait.php" generated-path="MyTrait.html" hash="88ece57fdf076dd9ba0ffc41ac810f6b" package="Default">
+  <file path="MyTrait.php" generated-path="MyTrait.html" hash="0e9736ea9f647c536234d239654ed0c3" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
@@ -71,27 +71,52 @@
         <long-description></long-description>
         <tag name="package" line="4" description="Default"/>
       </docblock>
-      <property static="false" visibility="protected" namespace="PHPDocMD" line="6" package="Default">
+      <property static="false" visibility="protected" namespace="PHPDocMD" line="10" package="Default">
         <name>$protectedPropertyOfMyTrait</name>
         <full_name>\PHPDocMD\MyTrait::protectedPropertyOfMyTrait</full_name>
-        <default>'protected'</default>
-        <docblock line="6">
+        <default></default>
+        <docblock line="10">
           <description></description>
           <long-description></long-description>
+          <tag name="var" line="10" description="&lt;p&gt;A protected property of MyTrait&lt;/p&gt;" type="string|null" variable="$protectedPropertyOfMyTrait">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="var" line="10" description="&lt;p&gt;Second protected property of MyTrait&lt;/p&gt;" type="string|null" variable="$protectedPropertyOfMyTrait2">
+            <type>string</type>
+            <type>null</type>
+          </tag>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="8" package="Default">
+      <property static="false" visibility="protected" namespace="PHPDocMD" line="10" package="Default">
+        <name>$protectedPropertyOfMyTrait2</name>
+        <full_name>\PHPDocMD\MyTrait::protectedPropertyOfMyTrait2</full_name>
+        <default></default>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" line="10" description="&lt;p&gt;A protected property of MyTrait&lt;/p&gt;" type="string|null" variable="$protectedPropertyOfMyTrait">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="var" line="10" description="&lt;p&gt;Second protected property of MyTrait&lt;/p&gt;" type="string|null" variable="$protectedPropertyOfMyTrait2">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="12" package="Default">
         <name>getterOfMyTrait</name>
         <full_name>\PHPDocMD\MyTrait::getterOfMyTrait()</full_name>
-        <docblock line="8">
+        <docblock line="12">
           <description></description>
           <long-description></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="13" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="17" package="Default">
         <name>setterOfMyTrait</name>
         <full_name>\PHPDocMD\MyTrait::setterOfMyTrait()</full_name>
-        <docblock line="13">
+        <docblock line="17">
           <description></description>
           <long-description></long-description>
         </docblock>
@@ -105,14 +130,13 @@
     <parse_markers>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
       <error line="4" code="PPC:ERR-50010">No summary for trait \PHPDocMD\MyTrait</error>
-      <error line="8" code="PPC:ERR-50008">No summary for method getterOfMyTrait()</error>
-      <error line="13" code="PPC:ERR-50015">Argument $value is missing from the Docblock of setterOfMyTrait</error>
-      <error line="13" code="PPC:ERR-50008">No summary for method setterOfMyTrait()</error>
-      <error line="6" code="PPC:ERR-50007">No summary for property $protectedPropertyOfMyTrait</error>
+      <error line="12" code="PPC:ERR-50008">No summary for method getterOfMyTrait()</error>
+      <error line="17" code="PPC:ERR-50015">Argument $value is missing from the Docblock of setterOfMyTrait</error>
+      <error line="17" code="PPC:ERR-50008">No summary for method setterOfMyTrait()</error>
     </parse_markers>
-    <source>eJx1jz0OwjAMhfecwkOlwsAJys/SgaWiAxcIwaWRShK5DlKEenfaBjIU9S225PfeJ+9PrnXCyCf2TiqE+lyXVlVlIQST1AxVuE5TvAWMcmQZFeMdsrTWZB0Sh0vz9cIB8nTNizkY0/7WaQWNN4q1NfBAZqSU22xnVyRNImRPBjJudb87/gFj87De3y/6JZEMkL1k53HJWoOMz8TAjzaA+ACKS2GT</source>
+    <source>eJydkMFqAjEQhu95iv+wh7q0CL1qWwseepEu6AukcdYNrEmYnQhL67vrZu0WLIo4lz8w/3wfZPoWqqCc3lITtCEUH8Xcm8V8opSwtoJFu+pSfSscZ5znKZFjttOMRti6zY+LdY0ssBcyQuuCfSCW9rM8XQPvGLbdK63hywF/B/QZSzLerW8ij1P+Na9wH69KJwnU0+JXbQ3K6IxY77AhEeKh+jBKrf7jumGSyA6ZVLZ5ev3n6Mn7y/zmjK+ZdYtsp+tI565LErycDn5te6gDTNapIw==</source>
   </file>
-  <file path="MyClass.php" generated-path="MyClass.html" hash="f9da4a0865043f5922641ee1363bed67" package="Default">
+  <file path="MyClass.php" generated-path="MyClass.html" hash="dbf6945a5088a847d2409b38a4311d79" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
@@ -121,6 +145,7 @@
     <class final="false" abstract="false" namespace="PHPDocMD" line="4" package="Default">
       <extends>\PHPDocMD\MyParentClass</extends>
       <implements>\PHPDocMD\MyInterface</implements>
+      <implements>\PHPDocMD\MySecondInterface</implements>
       <name>MyClass</name>
       <full_name>\PHPDocMD\MyClass</full_name>
       <docblock line="4">
@@ -129,40 +154,68 @@
         <tag name="package" line="4" description="Default"/>
         <tag name="inherited_from" description="\PHPDocMD\MyParentClass" refers="\PHPDocMD\MyParentClass" link="/classes/PHPDocMD.MyParentClass.html"/>
       </docblock>
-      <property static="false" visibility="protected" namespace="PHPDocMD" line="8" package="Default">
+      <property static="false" visibility="protected" namespace="PHPDocMD" line="11" package="Default">
         <name>$protectedProperty</name>
         <full_name>\PHPDocMD\MyClass::protectedProperty</full_name>
         <default>'protected'</default>
-        <docblock line="8">
+        <docblock line="11">
           <description></description>
           <long-description></long-description>
+          <tag name="var" line="11" description="&lt;p&gt;A protected property of MyClass&lt;/p&gt;" type="string" variable="">
+            <type>string</type>
+          </tag>
         </docblock>
       </property>
-      <property static="false" visibility="private" namespace="PHPDocMD" line="9" package="Default">
+      <property static="false" visibility="private" namespace="PHPDocMD" line="12" package="Default">
         <name>$privateProperty</name>
         <full_name>\PHPDocMD\MyClass::privateProperty</full_name>
         <default>'private'</default>
-        <docblock line="9">
+        <docblock line="12">
           <description></description>
           <long-description></long-description>
         </docblock>
       </property>
-      <property static="false" visibility="public" namespace="PHPDocMD" line="10" package="Default">
+      <property static="false" visibility="public" namespace="PHPDocMD" line="13" package="Default">
         <name>$publicProperty</name>
         <full_name>\PHPDocMD\MyClass::publicProperty</full_name>
         <default>'public'</default>
-        <docblock line="10">
+        <docblock line="13">
           <description></description>
           <long-description></long-description>
         </docblock>
       </property>
-      <property static="false" visibility="protected" namespace="PHPDocMD" line="6" package="Default">
+      <property static="false" visibility="protected" namespace="PHPDocMD" line="10" package="Default">
         <name>$protectedPropertyOfMyTrait</name>
         <full_name>\PHPDocMD\MyTrait::protectedPropertyOfMyTrait</full_name>
-        <default>'protected'</default>
-        <docblock line="6">
+        <default></default>
+        <docblock line="10">
           <description></description>
           <long-description></long-description>
+          <tag name="var" line="10" description="&lt;p&gt;A protected property of MyTrait&lt;/p&gt;" type="string|null" variable="$protectedPropertyOfMyTrait">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="var" line="10" description="&lt;p&gt;Second protected property of MyTrait&lt;/p&gt;" type="string|null" variable="$protectedPropertyOfMyTrait2">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="PHPDocMD" line="10" package="Default">
+        <name>$protectedPropertyOfMyTrait2</name>
+        <full_name>\PHPDocMD\MyTrait::protectedPropertyOfMyTrait2</full_name>
+        <default></default>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+          <tag name="var" line="10" description="&lt;p&gt;A protected property of MyTrait&lt;/p&gt;" type="string|null" variable="$protectedPropertyOfMyTrait">
+            <type>string</type>
+            <type>null</type>
+          </tag>
+          <tag name="var" line="10" description="&lt;p&gt;Second protected property of MyTrait&lt;/p&gt;" type="string|null" variable="$protectedPropertyOfMyTrait2">
+            <type>string</type>
+            <type>null</type>
+          </tag>
         </docblock>
       </property>
       <property static="true" visibility="protected" namespace="PHPDocMD" line="6" package="Default">
@@ -174,35 +227,27 @@
           <long-description></long-description>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="12" package="Default">
-        <name>__construct</name>
-        <full_name>\PHPDocMD\MyClass::__construct()</full_name>
-        <docblock line="12">
-          <description></description>
-          <long-description></long-description>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="22" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="20" package="Default">
         <name>getProtectedProperty</name>
         <full_name>\PHPDocMD\MyClass::getProtectedProperty()</full_name>
-        <docblock line="22">
+        <docblock line="20">
           <description>Getter of protectedProperty.</description>
           <long-description></long-description>
-          <tag name="return" line="22" description="The value of $this-&gt;protectedProperty" type="string">
+          <tag name="return" line="20" description="The value of $this-&gt;protectedProperty" type="string">
             <type>string</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="33" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="31" package="Default">
         <name>setProtectedProperty</name>
         <full_name>\PHPDocMD\MyClass::setProtectedProperty()</full_name>
-        <docblock line="33">
+        <docblock line="31">
           <description>Setter of protectedProperty.</description>
           <long-description></long-description>
-          <tag name="param" line="33" description="&lt;p&gt;The value to assign to $this-&gt;protectedProperty&lt;/p&gt;" type="string" variable="$value">
+          <tag name="param" line="31" description="&lt;p&gt;The value to assign to $this-&gt;protectedProperty&lt;/p&gt;" type="string" variable="$value">
             <type>string</type>
           </tag>
-          <tag name="return" line="33" description="The current instance of MyClass" type="\PHPDocMD\MyClass">
+          <tag name="return" line="31" description="The current instance of MyClass" type="\PHPDocMD\MyClass">
             <type>\PHPDocMD\MyClass</type>
           </tag>
           <tag name="fluent" description="This method is part of a fluent interface and will return the same instance"/>
@@ -218,27 +263,27 @@
           <type>array</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="PHPDocMD" line="44" package="Default">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="PHPDocMD" line="42" package="Default">
         <name>protectedMethod</name>
         <full_name>\PHPDocMD\MyClass::protectedMethod()</full_name>
-        <docblock line="44">
+        <docblock line="42">
           <description></description>
           <long-description></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="8" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="12" package="Default">
         <name>getterOfMyTrait</name>
         <full_name>\PHPDocMD\MyTrait::getterOfMyTrait()</full_name>
-        <docblock line="8">
+        <docblock line="12">
           <description></description>
           <long-description></long-description>
         </docblock>
         <inherited_from>\PHPDocMD\MyTrait</inherited_from>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="13" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="17" package="Default">
         <name>setterOfMyTrait</name>
         <full_name>\PHPDocMD\MyTrait::setterOfMyTrait()</full_name>
-        <docblock line="13">
+        <docblock line="17">
           <description></description>
           <long-description></long-description>
         </docblock>
@@ -276,16 +321,14 @@
     <parse_markers>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
       <error line="4" code="PPC:ERR-50005">No summary for class \PHPDocMD\MyClass</error>
-      <error line="12" code="PPC:ERR-50008">No summary for method __construct()</error>
-      <error line="33" code="PPC:ERR-50015">Argument $options is missing from the Docblock of setProtectedProperty</error>
-      <error line="33" code="PPC:ERR-50014">Name of argument $options does not match with the DocBlock's name $value in setProtectedProperty()</error>
-      <error line="33" code="PPC:ERR-50016">The type hint of the argument is incorrect for the type definition of the @param tag with argument $options in setProtectedProperty()</error>
-      <error line="44" code="PPC:ERR-50008">No summary for method protectedMethod()</error>
-      <error line="8" code="PPC:ERR-50007">No summary for property $protectedProperty</error>
-      <error line="9" code="PPC:ERR-50007">No summary for property $privateProperty</error>
-      <error line="10" code="PPC:ERR-50007">No summary for property $publicProperty</error>
+      <error line="31" code="PPC:ERR-50015">Argument $options is missing from the Docblock of setProtectedProperty</error>
+      <error line="31" code="PPC:ERR-50014">Name of argument $options does not match with the DocBlock's name $value in setProtectedProperty()</error>
+      <error line="31" code="PPC:ERR-50016">The type hint of the argument is incorrect for the type definition of the @param tag with argument $options in setProtectedProperty()</error>
+      <error line="42" code="PPC:ERR-50008">No summary for method protectedMethod()</error>
+      <error line="12" code="PPC:ERR-50007">No summary for property $privateProperty</error>
+      <error line="13" code="PPC:ERR-50007">No summary for property $publicProperty</error>
     </parse_markers>
-    <source>eJy1U8lqwzAQvfsr5mDIQtvc627QQNtDwNDcg6qMY4EtCWkcGkr+vbLkJcRJSg71wRo9vVneaPTwrHMdSVai1YwjpO/pXPHFPIkiXjBrYbF79St+E8p1vU+ZQUkBFaUusHTb+uBDEprMRYl+InBfZdGhS8MEJR7wP20UISdcQ9yZqVEaDe3gEUYdOEoavtgyQmfFjdmxIfA92LKrr0Jw8GxvHpA924Ojw3qCR1ZJTkJJWK24kpZMxWk88YygpnPY976z6TScTeENyakHlcFA1V3LadcXg1QZCS6LkBtY5ghbVlRYe8eUC3v7NAjS+M5O1rxBSo8dxhO4bzIcqWiyn8uUXFD5eY1KzQwrW5FxUNhrJQVugsRG1tYfqvuOYZH5GLwy9RSCcFfFJPeta0b1YqfsqU6F2m6AGcN2ECtdU+2jrIrieALOFepmK0RJTrZ50NP+FXSlddACKVfrwfBde23/l2IP0S9brk3S</source>
+    <source>eJy1UslqwzAQvfsr5mDIQtrcm6YLDbQ9BAzJD6jyOBbYspDGoaHk36vFS+sklByqi2ZGb5b3NPePKleRZCUaxThC8pasKr5eLaKIF8wYWB9e/I2fhDJ1fsI0SgpRUaoCS+u6h3dJqDNbZWadDfJKpl0o+orAntqgfdtqJsh2cJH5dOpvmMLTnmkwpIXcwTMoXRFywtRZCjUdoMracZqUub97ZNyZSZuzhFEXHC0avNgzQmvFjdmhIeB9sEXXH4Xg4NHe/AH2aB9swENKr0hWADf4yWS3Laajr5FqLVsFtjnCnhU1uuyYcmFuHk6K/NYhTJrVkpOoJOyQkmHCeAJ3TQefE77Fnab7pU6B3/Esy801LBXTrGxJxoFhz5UqsN8rdtJZf7DuFcMi8zV4rd1ugpCGmOR4cWMGSplzSoXZZsC0ZgeIK+WgZinropgMtLs0qN2PUGVxVuYTTftN7kbrQmukvErHw9bXftv/tThC9A1Ht1gT</source>
   </file>
   <file path="MyInterface.php" generated-path="MyInterface.html" hash="f763db08f89a96fd7a155a1fbfa97aeb" package="Default">
     <docblock line="0">
@@ -316,6 +359,36 @@
       <error line="6" code="PPC:ERR-50008">No summary for method methodOfMyInterface()</error>
     </parse_markers>
     <source>eJyzsS/IKODKS8xNLS5ITE5VCPAIcMlP9nWx5uLKzCtJLUoDCfpWesLYXNVcCkBQUJqUk5mskFaal1ySmZ+nkJtakpGf4p+GpFJD05qrVoELAEhyIJ8=</source>
+  </file>
+  <file path="MySecondInterface.php" generated-path="MySecondInterface.html" hash="73913ce9a9020cee158393fcd9a4fe26" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <interface namespace="PHPDocMD" line="4" package="Default">
+      <name>MySecondInterface</name>
+      <full_name>\PHPDocMD\MySecondInterface</full_name>
+      <docblock line="4">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="4" description="Default"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="PHPDocMD" line="6" package="Default">
+        <name>methodOfMySecondInterface</name>
+        <full_name>\PHPDocMD\MySecondInterface::methodOfMySecondInterface()</full_name>
+        <docblock line="6">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+    </interface>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="4" code="PPC:ERR-50009">No summary for interface \PHPDocMD\MySecondInterface</error>
+      <error line="6" code="PPC:ERR-50008">No summary for method methodOfMySecondInterface()</error>
+    </parse_markers>
+    <source>eJyzsS/IKODKS8xNLS5ITE5VCPAIcMlP9nWx5uLKzCtJLUoDCfpWBqcm5+eleMJEuKq5FICgoDQpJzNZIa00L7kkMz9PITe1JCM/xT8NQ72GpjVXrQIXAAqeJVc=</source>
   </file>
   <package name="Default" full_name="Default"/>
   <package name="global" full_name="global"/>

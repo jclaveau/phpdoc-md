@@ -3,7 +3,11 @@ namespace PHPDocMD;
 
 trait MyTrait
 {
-    protected $protectedPropertyOfMyTrait = 'protected';
+    /**
+     * @var string|null $protectedPropertyOfMyTrait  A protected property of MyTrait
+     * @var string|null $protectedPropertyOfMyTrait2 Second protected property of MyTrait
+     */
+    protected $protectedPropertyOfMyTrait, $protectedPropertyOfMyTrait2;
     
     public function getterOfMyTrait()
     {

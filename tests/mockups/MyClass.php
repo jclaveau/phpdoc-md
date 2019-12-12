@@ -4,15 +4,13 @@ namespace PHPDocMD;
 class MyClass extends MyParentClass implements MyInterface
 {
     use MyTrait;
-    
+
+    /**
+     * @var string A protected property of MyClass
+     */
     protected $protectedProperty = 'protected';
     private   $privateProperty   = 'private';
     public    $publicProperty    = 'public';
-    
-    public function __construct()
-    {
-        
-    }
     
     /**
      * Getter of protectedProperty.

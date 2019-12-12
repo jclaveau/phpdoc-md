@@ -67,12 +67,27 @@ if ($properties) {
 
     foreach (PHP::indexByDefiner($properties) as $definer => $properties) {
         echo $definer != $className 
-            ? "\n    Defined by: ".Generator::classDocLink($definer)."\n" 
+            ? "\n### Defined by: ".HTML::classDocLink($definer)."\n" 
             : '';
         
         foreach ($properties as $property) {
-            echo '    '.$property->generateSignature()."\n";
-            // echo (trim($property['description']) ? $property['description']."\n" : '');
+            echo '#### - '.HTML::link($property->generateCodeUrl(), $property->generateSignature())
+                .($property->isDeprecated() ? ' /!\ Deprecated /!\ ' : '')
+                ."\n";
+                
+            $fullDescription = [];
+            if ($property->getDescription()) {
+                $fullDescription[] = $property->getDescription();
+            }
+            
+            if ($property->getDefaultValue()) {
+                $fullDescription[] = 'Default value:<br>'
+                    .$property->getDefaultValue();
+            }
+            
+            if ($fullDescription) {
+                echo "<blockquote><pre>".implode("<br><br>", $fullDescription)."</pre></blockquote>\n\n\n";
+            }
         }
     }
 }
@@ -102,10 +117,6 @@ if ($methods) {
             }
                 
             if ($method->getArguments()) {
-                
-
-                
-                
                 $argumentsDescription = ["Parameters:"];
                 foreach ($method->getArguments() as $argument) {
                     // $argumentsDescription[] = ' &#43; '

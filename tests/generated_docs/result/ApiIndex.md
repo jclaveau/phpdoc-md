@@ -12,7 +12,6 @@
     * <a href='PHPDocMD-MyClass.md' >MyClass</a>
         * Constants
         * Properties
-        * __construct()
         * getProtectedProperty()
         * setProtectedProperty()
         * protectedMethod()
@@ -22,3 +21,7 @@
         * Constants
         * Properties
         * methodOfMyInterface()
+    * <a href='PHPDocMD-MySecondInterface.md' >MySecondInterface</a>
+        * Constants
+        * Properties
+        * methodOfMySecondInterface()

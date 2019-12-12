@@ -226,22 +226,30 @@ class Parser
         $className = (string) $xmlClass->full_name;
 
         foreach ($xmlClass->property as $xmlProperty) {
-            $type = 'mixed';
             $propName = (string) $xmlProperty->name;
             $default = (string) $xmlProperty->default;
 
-            $xmlVar = $xmlProperty->xpath('docblock/tag[@name="var"]');
-            if (count($xmlVar)) {
-                $type = $xmlVar[0]->type;
-                var_dump($xmlVar);
-                exit;
-            }
-            
+            $xmlVars = $xmlProperty->xpath('docblock/tag[@name="var"]');
+            $types = [];
+            $description = '';
+            if (count($xmlVars)) {
+                foreach ($xmlVars as $xmlVar) {
+                    if (((string) $xmlVar[0]['variable']) != $propName) {
+                        continue;
+                    }
+                    $types = (string) $xmlVar[0]->type;
+                    $description = preg_replace(
+                        '#(^'.preg_quote('<p>').')|('.preg_quote('</p>').'$)#', 
+                        '',
+                        (string) $xmlVar[0]['description']
+                    );
+                }
+            }            
 
             $property = (new PHP\Property)
                 ->setName($propName)
-                ->setType($type)
-                // ->setDescription($xmlProperty->xpath('docblock/tag[@name="var"]'))
+                ->setTypes($types)
+                ->setDescription($description)
                 ->setVisibility((string) $xmlProperty['visibility'])
                 ->isStatic( ((string) $xmlProperty['static']) == "true")
                 ->isDeprecated( count($xmlClass->xpath('docblock/tag[@name="deprecated"]')) > 0)

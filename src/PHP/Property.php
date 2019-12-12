@@ -3,18 +3,26 @@ namespace PHPDocMD\PHP;
 
 class Property extends AttributeDefinition
 {
-    protected $type = 'mixed';
+    protected $types = ['mixed'];
     protected $defaultValue;
 
-    public function setType($type)
+    public function setTypes($types)
     {
-        $this->type = $type;
+        if (is_string($types)) {
+            $types = [$types];
+        }
+        
+        if (empty($types)) {
+            $this->types = ['mixed'];
+        }
+        
+        $this->types = $types;
         return $this;
     }
     
-    public function getType()
+    public function getTypes()
     {
-        return $this->type;
+        return $this->types;
     }
     
     public function setDefaultValue($defaultValue)
@@ -38,11 +46,11 @@ class Property extends AttributeDefinition
             $definer = $this->isDefinedBy();
         }
         
-        $signature = $this->type.' '
-                   . $this->visibility.' '
+        $signature = $this->visibility.' '
+                   . implode('|', $this->types).' '
                    . $definer
                    . ($this->isStatic() ? '::$' : '->')
-                   . $this->name
+                   . ltrim($this->name, '$')
                    . ($this->defaultValue !== null ? ' = '.var_export($this->defaultValue, true) : '')
                    ;
         

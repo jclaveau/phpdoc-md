@@ -18,7 +18,7 @@
 
 
 ## Properties
-    mixed protected MyParentClass::$$myStaticProperty
+#### - <a href='../../mockups/MyAbstractParentClass.php#L6'>protected  MyParentClass::$myStaticProperty</a>
 
 ## Methods
 #### - <a href='../../mockups/MyAbstractParentClass.php#L8'>public static MyParentClass::getStaticProperty()</a>
