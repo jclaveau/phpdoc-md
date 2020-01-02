@@ -1,3 +1,4 @@
+* MyClassWithNoLineage
 * PHPDocMD
     * <a href='PHPDocMD-MySecondInterface.md' >MySecondInterface</a>
         * <a href='PHPDocMD-MySecondInterface.md#phpdocmdmysecondinterfacemethodofmysecondinterface' >methodOfMySecondInterface()</a>

@@ -16,13 +16,15 @@ use PHPDocMD\PHP\Helpers as PHP;
 if ( ! isset($level)) {
     $level = 0;
 }
+
+$extends = array_filter($extends);
 ?>
 
 <?= HTML::heading(
-    $level + 1, 
-    ($deprecated ? '/!\ Deprecated /!\ ': '') 
-        . ($abstract ? 'asbtract ' : '') 
-        . $namespace . ' \ ' . $shortClass 
+    $level + 1,
+    ($deprecated ? '/!\ Deprecated /!\ ': '')
+        . ($abstract ? 'asbtract ' : '')
+        . ($namespace == '\\' ? $namespace.' ' : $namespace. ' \ ') . $shortClass
 )
 ?>
 
@@ -38,7 +40,7 @@ if ( ! isset($level)) {
             <td><?= $namespace ?></td>
         </tr>
         <?php if ($extends) { ?>
-            <?php 
+            <?php
             $definitions = $GLOBALS['PHPDocMD_classDefinitions'];
             $current_parent = $extends[0];
             while ($current_parent) {
@@ -71,23 +73,23 @@ if ($constants) {
     echo HTML::heading($level + 2, "Constants");
 
     foreach (PHP::indexByDefiner($constants) as $definer => $constants) {
-        echo $definer != $className 
+        echo $definer != $className
             ? HTML::heading($level + 3, "Defined by: ".HTML::classDocLink($definer))
             : '';
 
         foreach ($constants as $constant) {
             echo HTML::heading(
-                $level + 4, 
+                $level + 4,
                 HTML::link($constant->generateCodeUrl(), $constant->generateSignature())
                 .($constant->isDeprecated() ? ' /!\ Deprecated /!\ ' : ''),
                 ['id' => MD::anchorId($constant->getPath())]
             );
-                
+
             $fullDescription = [];
             if ($constant->getDescription()) {
                 $fullDescription[] = $constant->getDescription();
             }
-                        
+
             if ($fullDescription) {
                 echo "<blockquote><pre>".implode("<br><br>", $fullDescription)."</pre></blockquote>\n\n\n";
             }
@@ -100,28 +102,28 @@ if ($properties) {
     echo HTML::heading($level + 2, "Properties");
 
     foreach (PHP::indexByDefiner($properties) as $definer => $properties) {
-        echo $definer != $className 
+        echo $definer != $className
             ? HTML::heading($level + 3, "Defined by: ".HTML::classDocLink($definer))
             : '';
-        
+
         foreach ($properties as $property) {
             echo HTML::heading(
-                $level + 4, 
+                $level + 4,
                 HTML::link($property->generateCodeUrl(), $property->generateSignature())
                 .($property->isDeprecated() ? ' /!\ Deprecated /!\ ' : ''),
                 ['id' => MD::anchorId($property->getPath())]
             );
-                
+
             $fullDescription = [];
             if ($property->getDescription()) {
                 $fullDescription[] = $property->getDescription();
             }
-            
+
             if ($property->getDefaultValue()) {
                 $fullDescription[] = 'Default value:<br>'
                     .$property->getDefaultValue();
             }
-            
+
             if ($fullDescription) {
                 echo "<blockquote><pre>".implode("<br><br>", $fullDescription)."</pre></blockquote>\n\n\n";
             }
@@ -134,24 +136,24 @@ if ($methods) {
     echo HTML::heading($level + 2, "Methods");
 
     foreach (PHP::indexByDefiner($methods) as $definer => $methods) {
-        echo $definer != $className 
+        echo $definer != $className
             ? HTML::heading($level + 3, "Defined by: ".HTML::classDocLink($definer))
             : '';
-        
+
         foreach ($methods as $method) {
             echo HTML::heading(
-                $level + 4, 
+                $level + 4,
                 HTML::link($method->generateCodeUrl(), $method->generateSignature())
                 .($method->isDeprecated() ? ' /!\ Deprecated /!\ ' : ''),
                 ['id' => MD::anchorId($method->getPath())]
             );
-            
+
             $fullDescription = [];
-            
+
             if ($method->getDescription()) {
                 $fullDescription[] = $method->getDescription();
             }
-                
+
             if ($method->getArguments()) {
                 $argumentsDescription = ["Parameters:"];
                 foreach ($method->getArguments() as $argument) {
@@ -164,14 +166,14 @@ if ($methods) {
                 }
                 $fullDescription[] = implode("<br>", $argumentsDescription);
             }
-            
+
             # todo use statement
             if ($method->getReturnDescription()) {
                 $fullDescription[] = "Returns a ".HTML::classDocLink($method->getReturnType())
                     .': '.$method->getReturnDescription()
                     ;
             }
-            
+
             if ($fullDescription) {
                 echo "<blockquote><pre>".implode("<br><br>", $fullDescription)."</pre></blockquote>\n\n\n";
             }

@@ -9,10 +9,6 @@
             <th>Namespace</th>
             <td>\PHPDocMD</td>
         </tr>
-                                <tr>
-                <th>Extends</th>
-                <td></td>
-            </tr>
                     </tbody>
 </table>
 

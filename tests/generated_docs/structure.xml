@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project title="API Documentation" version="2.8.5">
   <partials/>
+  <file path="MyClassWithNoLineage.php" generated-path="MyClassWithNoLineage.html" hash="a48018039989aa7b663b44bcb63c32d2" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="" line="4" package="Default">
+      <extends/>
+      <name>MyClassWithNoLineage</name>
+      <full_name>\MyClassWithNoLineage</full_name>
+      <docblock line="4">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="4" description="Default"/>
+      </docblock>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="4" code="PPC:ERR-50005">No summary for class \MyClassWithNoLineage</error>
+    </parse_markers>
+    <source>eJyzsS/IKODS11fIy1fIS8xNLS5ITE7l4krOSSwuVvCtdAbR4ZklGX75Ppl5qYnpqQoQtakVJal5KcUK+UUKmbkFOam5qXklxVzVXLVcAHreHBU=</source>
+  </file>
   <file path="MySecondInterface.php" generated-path="MySecondInterface.html" hash="73913ce9a9020cee158393fcd9a4fe26" package="Default">
     <docblock line="0">
       <description></description>
@@ -454,6 +476,7 @@
   </file>
   <package name="Default" full_name="Default"/>
   <package name="global" full_name="global"/>
+  <namespace name="global" full_name="global"/>
   <namespace name="PHPDocMD" full_name="PHPDocMD"/>
   <deprecated count="0"/>
 </project>
