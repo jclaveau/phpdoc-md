@@ -12,4 +12,4 @@
                     </tbody>
 </table>
 
-<h2 >Properties</h2><h4 id="phpdocmdmygrandparentclass"><a href='../../mockups/MyGrandParentClass.php#L6' >protected  MyGrandParentClass::$myStaticProperty</a></h4><h2 >Methods</h2><h4 id="phpdocmdmygrandparentclassgetstaticproperty"><a href='../../mockups/MyGrandParentClass.php#L8' >public static MyGrandParentClass::getStaticProperty()</a></h4>
+<h2 >Properties</h2><h4 id="phpdocmdmygrandparentclass">&bull; <a href='../../mockups/MyGrandParentClass.php#L6' >protected  MyGrandParentClass::$myStaticProperty</a></h4><h2 >Methods</h2><h4 id="phpdocmdmygrandparentclassgetstaticproperty">&bull; <a href='../../mockups/MyGrandParentClass.php#L8' >public static MyGrandParentClass::getStaticProperty()</a></h4>

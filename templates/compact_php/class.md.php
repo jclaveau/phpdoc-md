@@ -80,7 +80,8 @@ if ($constants) {
         foreach ($constants as $constant) {
             echo HTML::heading(
                 $level + 4,
-                HTML::link($constant->generateCodeUrl(), $constant->generateSignature())
+                '&bull; '
+                . HTML::link($constant->generateCodeUrl(), $constant->generateSignature())
                 .($constant->isDeprecated() ? ' /!\ Deprecated /!\ ' : ''),
                 ['id' => MD::anchorId($constant->getPath())]
             );
@@ -109,7 +110,8 @@ if ($properties) {
         foreach ($properties as $property) {
             echo HTML::heading(
                 $level + 4,
-                HTML::link($property->generateCodeUrl(), $property->generateSignature())
+                '&bull; '
+                . HTML::link($property->generateCodeUrl(), $property->generateSignature())
                 .($property->isDeprecated() ? ' /!\ Deprecated /!\ ' : ''),
                 ['id' => MD::anchorId($property->getPath())]
             );
@@ -143,8 +145,9 @@ if ($methods) {
         foreach ($methods as $method) {
             echo HTML::heading(
                 $level + 4,
-                HTML::link($method->generateCodeUrl(), $method->generateSignature())
-                .($method->isDeprecated() ? ' /!\ Deprecated /!\ ' : ''),
+                '&bull; '
+                . HTML::link($method->generateCodeUrl(), $method->generateSignature())
+                . ($method->isDeprecated() ? ' /!\ Deprecated /!\ ' : ''),
                 ['id' => MD::anchorId($method->getPath())]
             );
 

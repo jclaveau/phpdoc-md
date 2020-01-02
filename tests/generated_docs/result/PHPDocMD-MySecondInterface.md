@@ -12,4 +12,4 @@
                     </tbody>
 </table>
 
-<h2 >Methods</h2><h4 id="phpdocmdmysecondinterfacemethodofmysecondinterface"><a href='../../mockups/MySecondInterface.php#L6' >public MySecondInterface::methodOfMySecondInterface()</a></h4>
+<h2 >Methods</h2><h4 id="phpdocmdmysecondinterfacemethodofmysecondinterface">&bull; <a href='../../mockups/MySecondInterface.php#L6' >public MySecondInterface::methodOfMySecondInterface()</a></h4>

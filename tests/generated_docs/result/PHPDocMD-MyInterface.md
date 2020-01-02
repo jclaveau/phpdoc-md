@@ -12,4 +12,4 @@
                     </tbody>
 </table>
 
-<h2 >Methods</h2><h4 id="phpdocmdmyinterfacemethodofmyinterface"><a href='../../mockups/MyInterface.php#L6' >public MyInterface::methodOfMyInterface()</a></h4>
+<h2 >Methods</h2><h4 id="phpdocmdmyinterfacemethodofmyinterface">&bull; <a href='../../mockups/MyInterface.php#L6' >public MyInterface::methodOfMyInterface()</a></h4>
