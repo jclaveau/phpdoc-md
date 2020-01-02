@@ -68,7 +68,7 @@ class Generator
      * @param string $linkTemplate
      * @param string $apiIndexFile
      */
-    function __construct(array $classDefinitions, $outputDir, $templateDir, $linkTemplate = '%c.md', $apiIndexFile = 'ApiIndex.md', $templateEngine = 'php')
+    function __construct(array $classDefinitions, $outputDir, $templateDir, $linkTemplate = '%c.md', $apiIndexFile = 'README.md', $templateEngine = 'php')
     {
         $this->classDefinitions = $classDefinitions;
         $this->outputDir = $outputDir;
@@ -85,7 +85,7 @@ class Generator
     {
         $GLOBALS['PHPDocMD_classDefinitions'] = $this->classDefinitions;
         $GLOBALS['PHPDocMD_linkTemplate'] = $this->linkTemplate;
-        
+
         if ($this->templateEngine == 'twig') {
             $this->renderWithTwig();
         } elseif ($this->templateEngine == 'php') {
@@ -136,15 +136,15 @@ class Generator
     protected function renderWithPhp()
     {
         foreach ($this->classDefinitions as $className => $data) {
-            
+
             $output = static::renderFileInPhp(
                 $this->templateDir.'/class.md.php',
                 $data
             );
-            
+
             file_put_contents($this->outputDir . '/' . $data['docFile'], $output);
         }
-        
+
         $index = MD::createIndex($this->classDefinitions);
         $output = static::renderFileInPhp(
             $this->templateDir.'/index.md.php',
@@ -197,5 +197,5 @@ class Generator
 
         return implode('|', $returnedClasses);
     }
-    
+
 }

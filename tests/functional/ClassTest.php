@@ -17,9 +17,9 @@ class ClassTest extends \AbstractTest
           'output_dir'   => "$root/tests/generated_docs/result",
           'template_dir' => "$root/templates/compact_php",
           'lt'           => '%c.md',
-          'index'        => 'ApiIndex.md',
+          'index'        => 'README.md',
         ];
-        
+
         if ( ! file_exists($config['output_dir']) ) {
             mkdir($config['output_dir'], 0777, true);
         }
@@ -32,8 +32,8 @@ class ClassTest extends \AbstractTest
             $config['index']
         );
         $generator->run();
-        
-        $this->assertFileExists($config['output_dir'].'/ApiIndex.md');
+
+        $this->assertFileExists($config['output_dir'].'/README.md');
         $this->assertFileExists($config['output_dir'].'/PHPDocMD-MyClass.md');
         $this->assertFileExists($config['output_dir'].'/PHPDocMD-MyParentClass.md');
         $this->assertFileExists($config['output_dir'].'/PHPDocMD-MyInterface.md');
